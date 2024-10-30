@@ -116,6 +116,12 @@ Site admin | Review customer product reviews | Ensure reviews are appropriate fo
 
 ### Database schema <a name="database-schema"></a>
 
+[Lucid chart](www.lucidchart.com) was used to create a database schema and wireframes for the project. This ensured I had a clear vision for the project before beginning to write code.
+
+As I am using django/ django allauths models for managing users and login. The schema focusses on modals I created for managing products, shopping bags and reviews.
+
+![Screenshot database schema](/coffeeshop/static/images/database_schema.jpg)
+
 ***
 
 ### Wireframes <a name="wireframes"></a>
