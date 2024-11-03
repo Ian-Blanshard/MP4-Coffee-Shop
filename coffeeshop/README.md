@@ -126,13 +126,47 @@ As I am using django/ django allauths models for managing users and login. The s
 
 ### Wireframes <a name="wireframes"></a>
 
-### Mobile wireframes
+#### Homepage
+
+![Homepage wireframe](/coffeeshop/static/images/homepage-wireframe.jpg)
 
 ***
 
-### Tablet/ Desktop wireframes
+#### Products page
 
- ***
+![Products page wireframe](/coffeeshop/static/images/products_wireframe.jpg)
+
+***
+
+#### Single product page
+
+![Products page wireframe](/coffeeshop/static/images/single_product_wireframe.jpg)
+
+***
+
+#### Shopping bag page
+
+![Shopping bag page wireframe](/coffeeshop/static/images/shopping_bag_wireframe.jpg)
+
+***
+
+#### Submit review page
+
+![Submit review page wireframe](/coffeeshop/static/images/submit_review_wireframe.jpg)
+
+***
+
+#### Product reviews page
+
+![Submit review page wireframe](/coffeeshop/static/images/product_reviews_wireframe.jpg)
+
+***
+
+#### Profile page
+
+![Profile page wireframe](/coffeeshop/static/images/profile_wireframe.jpg)
+
+***
 
 ### Colour Scheme and Font <a name="styles"></a>
 
