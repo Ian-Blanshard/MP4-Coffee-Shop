@@ -1,3 +1,16 @@
+/* import for google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap');
+
+/*============================================================================
+=============================== Navbarstyles =================================
+============================================================================*/
+
+/* navbar logo */
+.site-logo {
+    font-size: 1.8rem;
+    font-family: 'lobster', serif;
+}
+/* profile and shopping bag icons in navbar  */
 .navbar-icon {
     font-size: 1.4rem;
     color: black;
