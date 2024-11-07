@@ -10,8 +10,26 @@
     font-size: 1.8rem;
     font-family: 'lobster', serif;
 }
+/* placeholder text search box */
+.search-bar-text {
+    font-family: 'lato', sans-serif;
+    font-weight: 600;
+}
 /* profile and shopping bag icons in navbar  */
 .navbar-icon {
     font-size: 1.4rem;
+    color: black;
+}
+/* secondary shop navbar */
+.sec-navbar {
+    background-color: rgb(100, 38, 38);
+}
+/* shopping category nav*/
+.shop-cat-nav {
+    text-decoration: none;
+    color: #fff;
+}
+/* shopping category nav text links */
+.shop-cat-nav-link:hover {
     color: black;
 }
