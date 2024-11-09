@@ -1,0 +1,64 @@
+body {
+    font-family: 'lobster', serif;
+}
+
+/*============================================================================
+========================= Background image styles ============================
+============================================================================*/
+/* set the hero image and its position and size */
+.hero-image {
+    background-image: url(/static/images/coffee_beans1.png);
+    background-position: top center; 
+    background-repeat: no-repeat;
+    background-size: 100% auto; 
+    height: 550px; 
+}
+/*============================================================================
+====================== Hero image section text styles ========================
+============================================================================*/
+/* title styles*/
+.index-title {
+    color: #f8f9fa;
+    font-size: 4rem;
+    text-shadow: 0 0 6px #000000, 0 0 9px #000000, 0 0 12px #000000;
+}
+/* index text styles */
+.index-text, .index-button {
+    color: #f8f9fa;
+    font-family: 'lato', sans-serif;
+    font-weight: 400;
+    text-shadow: 0 0 6px #000000, 0 0 9px #000000, 0 0 12px #000000;
+}
+/* index button styles */
+.index-button {
+    text-decoration: none;
+    font-size: 2rem;
+    background-color: black;
+    padding: 0.4rem 2rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 0 3px #fff, 0 0 3.5px #fff, 0 0 4.5px #fff, 0 0 6px #ffffff;
+}
+/*============================================================================
+======================== about section text styles ===========================
+============================================================================*/
+/* about div styles */
+.about-div {
+    background-color: black;
+    color: #f8f9fa;
+}
+.about-title {
+    font-size: 3rem;
+}
+/* about text styles */
+.about-text {
+    color: #f8f9fa;
+    font-family: 'lato', sans-serif;
+    font-weight: 400;
+}
+/* styles for about fontawesome icons */
+.about-icon {
+    font-size: 3rem;
+ }
+
+

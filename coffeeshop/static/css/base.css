@@ -22,14 +22,19 @@
 }
 /* secondary shop navbar */
 .sec-navbar {
-    background-color: rgb(100, 38, 38);
+    background-color: black;
+    font-family: 'lato', sans-serif;
 }
 /* shopping category nav*/
 .shop-cat-nav {
     text-decoration: none;
-    color: #fff;
+    color: #f8f9fa;
 }
 /* shopping category nav text links */
 .shop-cat-nav-link:hover {
-    color: black;
+    color: #f8f9fa;
+}
+
+nav {
+    padding-bottom: 0 !important;
 }

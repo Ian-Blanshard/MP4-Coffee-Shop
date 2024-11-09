@@ -1,7 +1,72 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-    
-    
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="{% static 'css/core.css' %}" />
+{% endblock%} {% block content %}
+<!-- div containing hero image and content -->
+<div
+  class="container-fluid hero-image d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="col-11 col-md-8 mx-auto">
+    <!-- homepage title -->
+    <h1 class="index-title text-center">Welcome to Coffee Shop</h1>
+  </div>
+  <br />
+  <!-- homepage text -->
+  <div class="col-11 col-md-6 mx-auto">
+    <p class="index-text text-center">
+      The best place to purchase everything required for that perfect coffee. We
+      sell whole beans, ground coffee and all the accessories required to make a
+      variety of unique coffees. If you love coffee as much as us take a look
+      around at the products we have to offer.
+    </p>
+  </div>
+  <br />
+  <!-- homepage shop link button -->
+  <div class="text-center">
+    <a class="index-button" href="">View Our Products</a>
+  </div>
+</div>
+<!-- div containing all about info -->
+<div class="container-fluid about-div">
+  <br />
+  <div class="row">
+    <!-- quality info -->
+    <div class="col-md-4 py-2 text-center">
+      <!-- quality title -->
+      <h2 class="about-title">Quality</h2>
+      <!-- quality icon -->
+      <i class="fa-solid fa-check about-icon m-2"></i>
+      <!-- quality text -->
+      <p class="about-text m-2">
+        We use only the highest quality coffee beans, roasted to our high
+        standard, passing rigorous quality control measure before being sold in
+        our shop.
+      </p>
+    </div>
+    <!-- ethical info -->
+    <div class="col-md-4 py-2 text-center">
+      <!-- ethical title -->
+      <h2 class="about-title">Ethical</h2>
+      <!-- ethical icon -->
+      <i class="fa-regular fa-handshake about-icon m-2"></i>
+      <!-- ethical text -->
+      <p class="about-text m-2">
+        All our products are ethically sourced and our farmers are paid a fair
+        price for the beans which we use to create our amazing products.
+      </p>
+    </div>
+    <!-- value info -->
+    <div class="col-md-4 py-2 text-center">
+      <!-- value title -->
+      <h2 class="about-title">Value</h2>
+      <!-- value icon -->
+      <i class="fa-solid fa-sterling-sign about-icon m-2"></i>
+      <!-- value text -->
+      <p class="about-text m-2">
+        We won't be beaten on price. The best prices around for ethically
+        sourced, locally roasted whole bean and ground coffee.
+      </p>
+    </div>
+  </div>
+</div>
 {% endblock %}
