@@ -1,44 +1,54 @@
 /* import for google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap");
 
 /*============================================================================
 =============================== Navbarstyles =================================
 ============================================================================*/
-
 /* navbar logo */
 .site-logo {
-    font-size: 1.8rem;
-    font-family: 'lobster', serif;
+  font-size: 1.8rem;
+  font-family: "lobster", serif;
 }
 /* placeholder text search box */
 .search-bar-text {
-    font-family: 'lato', sans-serif;
-    font-weight: 600;
+  font-family: "lato", sans-serif;
+  font-weight: 600;
 }
 /* profile and shopping bag icons in navbar  */
 .navbar-icon {
-    font-size: 1.4rem;
-    color: black;
+  font-size: 1.4rem;
+  color: black;
 }
 /* secondary shop navbar */
 .sec-navbar {
-    background-color: black;
-    font-family: 'lato', sans-serif;
+  background-color: black;
+  font-family: "lato", sans-serif;
 }
 /* shopping category nav*/
 .shop-cat-nav {
-    text-decoration: none;
-    color: #f8f9fa;
+  text-decoration: none;
+  color: #f8f9fa;
 }
 /* shopping category nav text links */
 .shop-cat-nav-link:hover {
-    color: #f8f9fa;
+  color: #f8f9fa;
 }
-
+/* whole nav element */
 nav {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 /* profile dropdown options */
 .dropdown-menu {
-    font-family: 'lato', sans-serif;
+  font-family: "lato", sans-serif;
 }
+/*============================================================================
+=========================== Navbarstyles mobile ==============================
+============================================================================*/
+/* mobile collapsable nav */
+.mobile-nav {
+  font-family: "lato", sans-serif;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  

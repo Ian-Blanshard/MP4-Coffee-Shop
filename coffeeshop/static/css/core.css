@@ -10,8 +10,8 @@ body {
     background-image: url(/static/images/coffee_beans1.png);
     background-position: top center; 
     background-repeat: no-repeat;
-    background-size: 100% auto; 
-    height: 550px; 
+    background-size: cover; 
+    min-height: 550px; 
 }
 /*============================================================================
 ====================== Hero image section text styles ========================
@@ -39,6 +39,20 @@ body {
     margin-top: 20px;
     box-shadow: 0 0 3px #fff, 0 0 3.5px #fff, 0 0 4.5px #fff, 0 0 6px #ffffff;
 }
+/* media queries for hero image section */
+/* decrease text size on smaller screen sizes */
+@media (max-width: 825px) {
+    .index-title {
+        font-size: 3rem;
+    }
+    .index-text {
+        font-size: 0.95rem;
+    }
+    .index-button {
+        font-size: 1.5rem;
+    }
+   
+}
 /*============================================================================
 ======================== about section text styles ===========================
 ============================================================================*/
@@ -60,5 +74,7 @@ body {
 .about-icon {
     font-size: 3rem;
  }
-
-
+/* to add some space between about sections on mobile */
+.mobile-spacer {
+    height: 50px;
+}

@@ -1,0 +1,103 @@
+<!-- nav bar for mobile -->
+<nav class="navbar navbar-dark bg-black d-block d-sm-none">
+  <div class="container-fluid">
+    <!-- title of site - links back to home page -->
+    <a class="navbar-brand site-logo" href="{% url 'home' %}">Coffee Shop</a>
+    <!-- button to toggle collapsed menu -->
+    <button
+      class="navbar-toggler collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbar-content"
+    >
+    <!-- icon for toggler -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- collapsed navbar content -->
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav mr-auto mb-2 mobile-nav">
+        <li class="nav-item">
+            <!-- link to homepage -->
+          <a class="nav-link text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <!-- secondary collapsable section for products menu -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            >Products</a
+          >
+          <ul class="dropdown-menu bg-black">
+            <a href="" class="dropdown-item text-white">Ground Coffee</a>
+            <a href="" class="dropdown-item text-white">Coffee Beans</a>
+            <a href="" class="dropdown-item text-white">Accessories</a>
+            <a href="" class="dropdown-item text-white">Special Offers</a>
+          </ul>
+        </li>
+        <!-- secondary collapsable section for shopping bag menu -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            >Shopping basket</a
+          >
+          <ul class="dropdown-menu bg-black">
+            <a href="" class="dropdown-item text-white">View Basket</a>
+          </ul>
+        </li>
+        <!-- secondary collapsable section for user profile menu -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            href="#"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            >User profile</a
+          >
+          <ul class="dropdown-menu bg-black">
+            {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+            <a href="" class="dropdown-item text-white">Product Management</a>
+            {% endif %}
+            <a href="" class="dropdown-item text-white">My Profile</a>
+            <a
+              href="{% url 'account_logout' %}"
+              class="dropdown-item text-white"
+              >Logout</a
+            >
+            {% else %}
+            <a
+              href="{% url 'account_signup' %}"
+              class="dropdown-item text-white"
+              >Register</a
+            >
+            <a href="{% url 'account_login' %}" class="dropdown-item text-white"
+              >Login</a
+            >
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+      <!-- search box -->
+      <form class="d-flex mx-auto border" role="search" method="GET" action="">
+        <!-- div input-group for placing button inside input -->
+        <div class="input-group">
+          <input
+            class="form-control border-0 search-bar-text"
+            type="text"
+            name="q"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn bg-white border-0" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+      <br />
+    </div>
+  </div>
+</nav>
