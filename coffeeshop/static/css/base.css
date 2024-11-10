@@ -38,3 +38,7 @@
 nav {
     padding-bottom: 0 !important;
 }
+/* profile dropdown options */
+.dropdown-menu {
+    font-family: 'lato', sans-serif;
+}
