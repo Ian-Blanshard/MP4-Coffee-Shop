@@ -200,6 +200,29 @@ My app demonstrates CRUD functionality as outlined below:
 
 ***
 
+#### Navbar
+
+![Full screen navbar](/coffeeshop/static/images/full_screen_navbar.jpg)
+
+***
+
+#### Mobile navbar
+
+![Mobile navbar](/coffeeshop/static/images/mobile_navbar_collapsed.jpg)
+
+![Mobile navbar](/coffeeshop/static/images/mobile_navbar_expanded.jpg)
+
+***
+#### Homepage
+
+![Full screen Homepage](/coffeeshop/static/images/home_page.jpg)
+
+![Full screen Homepage 2](/coffeeshop/static/images/home_page1.jpg)
+
+![Mobile Homepage](/coffeeshop/static/images/home_page_mobile.jpg)
+
+***
+
 #### 404 page
 
 The 404 page is designed to show when the page the user is trying to view can't be returned, for example if they enter an incorrect URL, the page has been moved or deleted, or there is a broken link. The 404 page contains the navbar, some simple text and a button to return the user to the homepage. 
@@ -231,6 +254,14 @@ When creating my project I frequently used the docs for
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
 In addition to these the following sites/tutorials/blogs were useful:
+
+[This codepen](https://codepen.io/akku_186/pen/BaGRQwg) code was useful to learn how to create the mobile collapsing navbar, the code was modified to suit my specific needs.
+
+[This tutorial](https://www.geeksforgeeks.org/how-to-change-hamburger-toggler-color-in-bootstrap/) was useful for customising the hamburger toggler.
+
+The image for the background of index.html is by Raymond Petrik Devlin from [Pexels](https://www.pexels.com/photo/rich-roasted-coffee-beans-texture-background-28742831/)
+
+
 
 <br>
 

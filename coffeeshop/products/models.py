@@ -4,6 +4,11 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Category(models.Model):
     """model for products category"""
+
+    #change name to plural in admin 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -14,7 +19,7 @@ class Category(models.Model):
         return self.friendly_name
 
 
-class Products(models.Model):
+class Product(models.Model):
     """model for products and their details"""
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
