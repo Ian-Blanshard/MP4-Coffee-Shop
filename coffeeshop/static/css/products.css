@@ -1,0 +1,19 @@
+.products-header {
+    font-family: 'lato', sans-serif;
+}
+.product-container {
+    border: 1px solid black;
+}
+
+
+.products-button {
+    color: #f8f9fa;
+    font-family: 'lato', sans-serif;
+    font-weight: 400;
+    text-shadow: 0 0 6px #000000, 0 0 9px #000000, 0 0 12px #000000;
+    text-decoration: none;
+    background-color: black;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    margin-top: 10px;
+}
