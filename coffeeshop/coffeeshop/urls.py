@@ -23,4 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # my apps
     path('', include('core.urls')),
+    path('products/', include('products.urls')),
 ]

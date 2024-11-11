@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+{% endblock%} {% block content %}
+<!-- div containing hero image and content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            {{ products }}
+        </div>
+    </div>
+</div>
+{% endblock %}
