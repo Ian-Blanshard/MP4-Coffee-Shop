@@ -4,7 +4,7 @@
     <!-- title of site - links back to home page -->
     <a class="navbar-brand site-logo" href="{% url 'home' %}">Coffee Shop</a>
     <!-- search box -->
-    <form class="d-flex mx-auto border" role="search" method="GET" action="">
+    <form class="d-flex mx-auto border" role="search" method="GET" action="{% url 'products' %}">
       <!-- div input-group for placing button inside input -->
       <div class="input-group">
         <input
