@@ -30,10 +30,10 @@
             >Products</a
           >
           <ul class="dropdown-menu bg-black">
-            <a href="" class="dropdown-item text-white">Ground Coffee</a>
-            <a href="" class="dropdown-item text-white">Coffee Beans</a>
-            <a href="" class="dropdown-item text-white">Accessories</a>
-            <a href="" class="dropdown-item text-white">Special Offers</a>
+            <a href="{% url 'products'%}?category=ground_coffee" class="dropdown-item text-white">Ground Coffee</a>
+            <a href="{% url 'products'%}?category=coffee_beans" class="dropdown-item text-white">Coffee Beans</a>
+            <a href="{% url 'products'%}?category=accessories" class="dropdown-item text-white">Accessories</a>
+            <a href="{% url 'products'%}?category=special_offers" class="dropdown-item text-white">Special Offers</a>
           </ul>
         </li>
         <!-- secondary collapsable section for shopping bag menu -->
