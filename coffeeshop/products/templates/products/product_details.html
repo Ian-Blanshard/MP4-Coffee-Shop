@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+{% endblock%} {% block content %}
+<!-- div containing hero image and content -->
+<div class="container-fluid">
+  <!-- products page title -->
+  <div class="row justify-content-center">
+    <div class="col-8 mt-5 products-header">
+      <h1>{{ product.product_name }}</h1>
+    </div>
+  </div>
+  <!-- products page products container -->
+  <div class="row justify-content-center">
+    <!-- loop through each product and create container -->
+    <div class="col-8 col-sm-3 product-details-container">
+      <!-- set image if products has one -->
+      {% if product.image %}
+      <a href="{{ product.image.url }}" target="_blank">
+        <img
+          class="card-img-top img-fluid"
+          src="{{ product.image.url }}"
+          alt="{{ product.name }}"
+        />
+      </a>
+      <!-- or no image png if product has no image -->
+      {% else %}
+      <a href="{{ MEDIA_URL }}noimage.png" target="_blank">
+        <img
+          class="card-img-top img-fluid"
+          src="{{ MEDIA_URL }}noimage.png"
+          alt="{{ product.name }}"
+        />
+      </a>
+      {% endif %}
+    </div>
+    <!-- container with product info -->
+    <div class="col-8 col-sm-3 d-flex flex-column justify-content-center">
+      <p class="">Size :</p>
+      <p class="">Price : £{{ product.price }}</p>
+    </div>
+    <div class="d-none d-sm-block col-sm-3 d-flex flex-column justify-content-center">
+      <p>
+        <!-- svg drawn in figma and exported-->
+        <svg
+          width="50%"
+          height="50%"
+          viewBox="0 0 273 273"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M136.5 4.36689L166.064 61.7502L166.839 63.255L168.451 62.7391L229.932 43.0678L210.261 104.549L209.745 106.161L211.25 106.936L268.633 136.5L211.25 166.064L209.745 166.839L210.261 168.451L229.932 229.932L168.451 210.261L166.839 209.745L166.064 211.25L136.5 268.633L106.936 211.25L106.161 209.745L104.549 210.261L43.0678 229.932L62.7391 168.451L63.255 166.839L61.7502 166.064L4.36689 136.5L61.7502 106.936L63.255 106.161L62.7391 104.549L43.0678 43.0678L104.549 62.7391L106.161 63.255L106.936 61.7502L136.5 4.36689Z"
+            stroke="black"
+            stroke-width="4"
+          />
+          <text
+            class="offer-star"
+            x="50%"
+            y="50%"
+            dominant-baseline="middle"
+            text-anchor="middle"
+          >
+            10% off
+          </text>
+        </svg>
+      </p>
+    </div>
+  </div>
+  <!-- container with product rating / quantity select/ add to basket button -->
+  <div class="row justify-content-center m-3">
+    <div class="col-8 col-sm-3">
+      <span
+        ><p>Rating :</p>
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+        ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+        ><i class="fa-solid fa-star"></i
+      ></span>
+    </div>
+    <div class="col-8 col-sm-3"><p>Quantity :</p></div>
+    <div class="col-8 col-sm-3">
+      <a href="" class="d-block products-button mb-5">Add to Shopping Bag</a>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 col-sm-3 rating-container"></div>
+  </div>
+  <!-- container with product description -->
+  <div class="row justify-content-center m-3">
+    <div class="col-10">
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+  <!-- container with back to products button -->
+  <div class="row ">
+    <a href="" class="col-3 offset-8 products-button">Back to Products</a>
+  </div>
+</div>
+{% endblock %}

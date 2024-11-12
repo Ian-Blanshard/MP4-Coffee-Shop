@@ -7,23 +7,26 @@
   <!-- products page title -->
   <div class="row">
     <div class="col text-center mt-5 products-header">
-      <h1>Products</h1>
+      <h1>Product</h1>
     </div>
   </div>
   <!-- products page products container -->
-  <div class="row">
+  <div class="row justify-content-center">
+    <!-- loop through each product and create container -->
     {% for product in products %}
-    <div class="col-md-3 m-5 product-container">
+    <div class="col-10 col-sm-5 col-lg-3 m-3 product-container">
+      <!-- set image if products has one -->
       {% if product.image %}
-      <a href="">
+      <a href="{% url 'product_detail' product.id %}">
         <img
           class="card-img-top img-fluid"
           src="{{ product.image.url }}"
           alt="{{ product.name }}"
         />
       </a>
+      <!-- or no image png if product has no image -->
       {% else %}
-      <a href="">
+      <a href="{% url 'product_detail' product.id %}">
         <img
           class="card-img-top img-fluid"
           src="{{ MEDIA_URL }}noimage.png"
@@ -33,15 +36,15 @@
       {% endif %}
       <div class="">
         <div class="row">
+          <!-- container with product info / buttons -->
           <div class="col text-center">
             <p class="">{{ product.product_name }}</p>
             <p class="">Price : £{{ product.price }}</p>
             <div class="d-inline-block">
-              <a href="" class="d-block products-button"
+              <a
+                href="{% url 'product_detail' product.id %}"
+                class="d-block products-button"
                 >View product details</a
-              >
-              <a href="" class="d-block products-button mb-5"
-                >Add to Shopping Bag</a
               >
             </div>
           </div>
@@ -51,5 +54,4 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock %}

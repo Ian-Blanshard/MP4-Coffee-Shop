@@ -1,11 +1,19 @@
+/*============================================================================
+======================== products page header styles ==========================
+============================================================================*/
+/* page title */
 .products-header {
     font-family: 'lato', sans-serif;
 }
+
+/*============================================================================
+====================== products page products styles ==========================
+============================================================================*/
+/* single product container */
 .product-container {
     border: 1px solid black;
 }
-
-
+/* products buttons */
 .products-button {
     color: #f8f9fa;
     font-family: 'lato', sans-serif;
@@ -16,4 +24,12 @@
     padding: 0.4rem 1rem;
     border-radius: 5px;
     margin-top: 10px;
+}
+/*============================================================================
+======================= product detail page styles ===========================
+============================================================================*/
+.offer-star {
+    font-family: 'lato', sans-serif;
+    font-size: 2rem;
+    fill: black;
 }
