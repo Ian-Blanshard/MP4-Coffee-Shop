@@ -11,17 +11,33 @@
     </div>
   </div>
   
-
-<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+<div class="container">
+  <div class="row">
+<div class="col-2">
+  {% if current_sorting != 'None_None' %}
+  <p>current order : {{ current_sorting}}</p>
+  {% endif %}
+  <a class="products-button dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
     Sort
   </a>
-  <p>current order : {{ current_sorting}}</p>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a href="?sort=price&direction=asc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}" class="dropdown-item">Price (Low to High)</a></li>
     <li><a href="?sort=price&direction=desc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}" class="dropdown-item">Price (High to Low)</a></li>
     <li><a href="?sort=rating&direction=desc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}" class="dropdown-item">Rating</a></li>
   </ul>
+</div>
+<div class="col-8 text-center">
+  <p class="">
+      {{ products|length }} Products{% if search_term %} found for search term <strong>{{ search_term }}</strong>{% endif %}
+  </p>
+</div> 
+<div class="col-2">
+  {% if search_term or current_categories or current_sorting != 'None_None' %}
+          <a href="{% url 'products' %}" class="products-button">Products Home</a>
+      {% endif %}
+</div>
+
+</div>
 </div>
   <!-- products page products container -->
   <div class="row justify-content-center">
