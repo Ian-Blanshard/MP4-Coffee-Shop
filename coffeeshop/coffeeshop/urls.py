@@ -26,6 +26,7 @@ urlpatterns = [
     # my apps
     path('', include('core.urls')),
     path('products/', include('products.urls')),
+    path('bag/', include('bag.urls')),
 ]
 
 if settings.DEBUG:

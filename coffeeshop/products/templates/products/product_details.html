@@ -38,6 +38,9 @@
     <div class="col-8 col-sm-3 d-flex flex-column justify-content-center">
       <p class="">Size :</p>
       <p class="">Price : £{{ product.price }}</p>
+      {% if product.category %}
+        <p class="">Category : {{ product.category.friendly_name }}</p>
+      {% endif %}
     </div>
     <div class="d-none d-sm-block col-sm-3 d-flex flex-column justify-content-center">
       <p>
