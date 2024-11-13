@@ -2,5 +2,34 @@
 <!-- homepage specific CSS link -->
 <link rel="stylesheet" href="{% static 'css/bag.css' %}" />
 {% endblock%} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col5 offset-1">
+            <h1 class="mt-5 products-header">Shopping Bag</h1>
+        </div>
+    </div>
+    {% if bag_items %}
+    <div class="row">
+        <div class="col-2 offset-1">
+            Product image
+        </div>
+        <div class="col-3">
+            Product name
+        </div>
+        <div class="col-5">
+            product quantity / price
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    {% else %}
+    <div class="row">
+        <div class="col5 offset-1">
+            <p>shopping bag is empty</p>
+        </div>
+        <a href="{% url 'products' %}" class="">Keep Shopping</a>
+    </div>
+    {% endif %}
+</div>
 
 {% endblock %}

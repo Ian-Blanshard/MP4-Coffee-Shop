@@ -82,6 +82,8 @@ TEMPLATES = [
                  'django.template.context_processors.media',
                  # `allauth` needs this from django
                 'django.template.context_processors.request',
+                # ensures bag is accessible accross all apps
+                'bag.contexts.bag_contents',
             ],
         },
     },
@@ -163,6 +165,9 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media'
+
+FREE_DELIVERY_THESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
