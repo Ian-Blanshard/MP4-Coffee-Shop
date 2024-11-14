@@ -34,23 +34,40 @@
           <p class="">{{ item.product.product_name }}</p>
         </td>
         <td class="">
-          <p class="">${{ item.product.price }}</p>
+          <p class="">£{{ item.product.price }}</p>
         </td>
         <td class="">
-          <p class="">{{ item.quantity }}</p>
+          <form method="POST" action="{% url 'update_bag' item.item_id %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input
+                  class="form-control"
+                  type="number"
+                  name="quantity"
+                  value="{{ item.quantity }}"
+                  min="1"
+                  max="99"
+                  data-item_id="{{ item.item_id }}"
+                  id="id_qty_{{ item.item_id }}"
+                />
+              </div>
+              <button type="submit" name="edit" value="update" class="products-button">Update</button>
+              <button type="submit" name="edit" value="delete" class="products-button">Delete</button>
+          </form>
+          
         </td>
         <td class="">
-          <p class="">${{ item.product.price }}</p>
+          <p class="">£{{ item.item_total }}</p>
         </td>
       </tr>
       {% endfor %}
     </table>
     <div class="row">
       <div class="col-12 col-sm-6 text-center">
-        <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
-        <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+        <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
+        <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
         <h4 class="mt-4">
-          <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
+          <strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong>
         </h4>
         {% if free_delivery_delta > 0 %}
         <p class="mb-1 text-danger">

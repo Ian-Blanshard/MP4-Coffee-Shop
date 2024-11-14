@@ -21,3 +21,27 @@ def add_to_bag(request, item_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+def update_bag(request, item_id):
+    """ update shopping bag quantities """
+
+    bag = request.session.get('bag', {})
+
+    if request.method == 'POST':
+        edit = request.POST.get('edit')
+
+        if edit == 'update':
+            quantity = int(request.POST.get('quantity', 1))
+            # update quantity
+            if quantity > 0:
+                bag[item_id] = quantity
+            # if none left in bag pop
+            else:
+                bag.pop(item_id, None)
+        elif edit == 'delete':
+            # pop item from bag
+            bag.pop(item_id, None)
+        
+        request.session['bag'] = bag
+    
+    return redirect('view_bag')
