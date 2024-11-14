@@ -3,33 +3,94 @@
 <link rel="stylesheet" href="{% static 'css/bag.css' %}" />
 {% endblock%} {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col5 offset-1">
-            <h1 class="mt-5 products-header">Shopping Bag</h1>
-        </div>
+  <div class="row">
+    <div class="col5 offset-1">
+      <h1 class="mt-5 products-header">Shopping Bag</h1>
     </div>
-    {% if bag_items %}
+  </div>
+  {% if bag_items %}
+  <div class="row">
+    <table class="table table-sm table-borderless">
+      <thead class="text-black">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+
+      {% for item in bag_items %}
+      <tr>
+        <td class="p-3 w-15">
+          {% if item.product.image %}
+          <img class="" src="{{ item.product.image.url }}" />
+          {% else %}
+          <img class="" src="{{ MEDIA_URL }}noimage.png" />
+          {% endif %}
+        </td>
+        <td class="">
+          <p class="">{{ item.product.product_name }}</p>
+        </td>
+        <td class="">
+          <p class="">${{ item.product.price }}</p>
+        </td>
+        <td class="">
+          <p class="">{{ item.quantity }}</p>
+        </td>
+        <td class="">
+          <p class="">${{ item.product.price }}</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
     <div class="row">
-        <div class="col-2 offset-1">
-            Product image
-        </div>
-        <div class="col-3">
-            Product name
-        </div>
-        <div class="col-5">
-            product quantity / price
-        </div>
+      <div class="col-12 col-sm-6 text-center">
+        <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+        <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+        <h4 class="mt-4">
+          <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
+        </h4>
+        {% if free_delivery_delta > 0 %}
+        <p class="mb-1 text-danger">
+          You could get free delivery by spending just
+          <strong>${{ free_delivery_delta }}</strong> more!
+        </p>
+        {% endif %}
+      </div>
+      <div class="col-12 col-sm-6">
+        <p>
+          Please note coffee shop is a fictitious store, created by me, to
+          practice my web development skills. No real charges can occur through
+          using the checkout feature and nothing from the store can actually be
+          purchased. For more details please visit my GitHub and read the
+          README. https://github.com/Ian-Blanshard/MP4-Coffee-Shop
+        </p>
+      </div>
     </div>
-    <div class="row"></div>
-    <div class="row"></div>
+    <div class="row">
+      <div class="col-6 offset-6  mt-5 text-center">
+        <a href="{% url 'products' %}" class="products-button">
+          <span class="">Keep Shopping</span>
+        </a>
+        <a href="" class="products-button">
+          <span class="">Secure Checkout</span>
+          <span class="icon">
+            <i class="fas fa-lock"></i>
+          </span>
+        </a>
+      </div>
+    </div>
     {% else %}
     <div class="row">
-        <div class="col5 offset-1">
-            <p>shopping bag is empty</p>
-        </div>
-        <a href="{% url 'products' %}" class="">Keep Shopping</a>
+      <div class="col5 offset-1">
+        <p>shopping bag is empty</p>
+      </div>
+      <a href="{% url 'products' %}" class="products-button">Keep Shopping</a>
     </div>
     {% endif %}
-</div>
+  </div>
 
-{% endblock %}
+  {% endblock %}
+</div>

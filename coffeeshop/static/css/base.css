@@ -49,6 +49,17 @@ nav {
   font-family: "lato", sans-serif;
 }
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  }
-  
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+/* for all buttons !!!!!!!!!need to change name and make global style */
+.products-button {
+  color: #f8f9fa;
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  text-shadow: 0 0 6px #000000, 0 0 9px #000000, 0 0 12px #000000;
+  text-decoration: none;
+  background-color: black;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  margin-top: 10px;
+}
