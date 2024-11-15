@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-
+from django.contrib import messages
+from products.models import Product
 
 # Create your views here.
 
@@ -10,14 +11,18 @@ def view_bag(request):
 def add_to_bag(request, item_id):
     """ Add a product to the shopping bag """
 
+    product = Product.objects.get(pk=item_id)
+    
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
 
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
+        messages.success(request, f'added {product.product_name} to your bag', extra_tags=add_to_bag)
     else:
         bag[item_id] = quantity
+        messages.success(request, f'added {product.product_name} to your bag', extra_tags=add_to_bag)
 
     request.session['bag'] = bag
     return redirect(redirect_url)
