@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # allauth apps
     'allauth',
     'allauth.account',
+    # cripsy forms
+    "crispy_forms",
+    "crispy_bootstrap5",
     # my apps
     'core',
     'products',
@@ -86,6 +89,9 @@ TEMPLATES = [
                 # ensures bag is accessible accross all apps
                 'bag.contexts.bag_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+            ]
         },
     },
 ]
@@ -153,6 +159,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+# crispy forms packs
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
