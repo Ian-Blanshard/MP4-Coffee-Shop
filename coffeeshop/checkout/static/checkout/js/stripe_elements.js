@@ -2,6 +2,46 @@
     Core logic/payment flow for this comes from here:
     https://stripe.com/docs/payments/accept-a-payment
 */
+
+function fadeToggle(element, duration = 100) {
+    // Check the current display state of the element
+    const isHidden = window.getComputedStyle(element).display === 'none';
+
+    if (isHidden) {
+        // Show the element by setting display and starting opacity at 0
+        element.style.display = 'block';
+        element.style.opacity = 0;
+
+        // Gradually increase the opacity to 1
+        let opacity = 0;
+        const increment = 10 / duration;
+        const fadeIn = setInterval(() => {
+            opacity += increment;
+            if (opacity >= 1) {
+                element.style.opacity = 1;
+                clearInterval(fadeIn);
+            } else {
+                element.style.opacity = opacity;
+            }
+        }, 10);
+    } else {
+        // Gradually decrease the opacity to 0
+        let opacity = 1;
+        const decrement = 10 / duration;
+        const fadeOut = setInterval(() => {
+            opacity -= decrement;
+            if (opacity <= 0) {
+                element.style.opacity = 0;
+                clearInterval(fadeOut);
+                // Hide the element after the fade-out
+                element.style.display = 'none';
+            } else {
+                element.style.opacity = opacity;
+            }
+        }, 10);
+    }
+}
+
 // get key/secret from the html elements and create variables
 console.log('js loaded')
 var stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim().slice(1, -1);
@@ -44,6 +84,7 @@ card.addEventListener('change', function (event) {
         errorDiv.textContent = '';
     }
 });
+
 // get payment form element as a variable
 var form = document.getElementById('payment-form');
 // add event listener for submit and function when its pressed
@@ -53,6 +94,9 @@ form.addEventListener('submit', function(ev) {
     // Disable card and submit button during payment processing
     card.update({ 'disabled': true });
     document.getElementById('submit-button').disabled = true;
+    // fade out payment for and in overly
+    fadeToggle(document.getElementById('payment-form'), 100);
+    fadeToggle(document.getElementById('loading-overlay'), 100);
     // Confirm the payment with Stripe
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -73,6 +117,9 @@ form.addEventListener('submit', function(ev) {
                 <span>${result.error.message}</span>
             `;
             errorDiv.innerHTML = html;
+            // fade payment loading overlay and reshow form
+            fadeToggle(document.getElementById('payment-form'), 100);
+            fadeToggle(document.getElementById('loading-overlay'), 100);
             // Re-enable card and submit button
             card.update({ 'disabled': false });
             document.getElementById('submit-button').disabled = false;
