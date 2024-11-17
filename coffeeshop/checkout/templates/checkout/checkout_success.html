@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="" />
+{% endblock%} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col5 offset-1">
+      <h1 class="mt-5 products-header">Checkout</h1>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <p>Thank you for your order, the details are below. A confirmation email will be sent to {{ order.email }}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 offset-6 mt-5 text-center">
+    <a href="{% url 'products' %}" class="products-button">
+      <span class="">Return to shop</span>
+    </a>
+    <a href="" class="">
+      <span class="">View profile</span>
+      <span class="icon">
+        <i class="fas fa-lock"></i>
+      </span>
+    </a>
+  </div>
+</div>
+{% endblock %}

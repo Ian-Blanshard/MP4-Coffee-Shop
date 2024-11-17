@@ -3,6 +3,7 @@
     https://stripe.com/docs/payments/accept-a-payment
 */
 // get key/secret from the html elements and create variables
+console.log('js loaded')
 var stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim().slice(1, -1);
 var clientSecret = document.getElementById('id_client_secret').textContent.trim().slice(1, -1);
 // initialise stripe passing the key
@@ -79,6 +80,7 @@ form.addEventListener('submit', function(ev) {
             // if payment succesful
             if (result.paymentIntent.status === 'succeeded') {
                 // Submit the form if payment is successful
+                console.log('form submitted')
                 form.submit();
             }
         }
