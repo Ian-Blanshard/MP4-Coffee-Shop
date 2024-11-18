@@ -1,8 +1,12 @@
 from django import forms
+from django_countries.fields import CountryField
 from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+
+    country = CountryField().formfield()
+    
     class Meta:
         model = Order
         # fields to include in form
