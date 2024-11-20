@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'profiles',
 
 
 ]
@@ -73,6 +74,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'templates',
+            BASE_DIR / 'templates' / 'allauth',
 
         ],
         'APP_DIRS': True,
@@ -84,8 +86,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                  # ensures media is accessible accross all apps
                  'django.template.context_processors.media',
-                 # `allauth` needs this from django
-                'django.template.context_processors.request',
                 # ensures bag is accessible accross all apps
                 'bag.contexts.bag_contents',
             ],
