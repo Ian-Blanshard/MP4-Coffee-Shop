@@ -1,12 +1,11 @@
 from django.db import models
-from products.models import Product
 from profiles.models import UserProfile
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Reviews(models.Model):
     """model for reviews"""
 
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=False, related_name='reviews')
+    product = models.ForeignKey('products.Product', on_delete=models.SET_NULL, null=True, blank=False, related_name='reviews')
     user = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, null=False, blank=False, related_name='reviews'
     )
