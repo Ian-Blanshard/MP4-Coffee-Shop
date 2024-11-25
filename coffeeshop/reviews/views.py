@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from products.models import Product
+from .forms import ReviewForm
 
 # Create your views here.
 def product_reviews(request, product_id):
@@ -13,9 +15,31 @@ def product_reviews(request, product_id):
     return render(request, 'reviews/product_reviews.html', context)
 
 
-def add_review(request):
+def add_review(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
 
-    return render(request)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            
+            review = form.save(commit=False)
+            
+            review.user = request.user.userprofile 
+            review.product = product
+            review.save()  
+            return redirect('product_detail', product_id=product.id)
+        else:
+            messages.error(request, "Please ensure the review form is filled in correctly")
+    else:
+        form = ReviewForm()
+
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, 'reviews/add_review.html', context)
+    
 
 
 def edit_review(request):
