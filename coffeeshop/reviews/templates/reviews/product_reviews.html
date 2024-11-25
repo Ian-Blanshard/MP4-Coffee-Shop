@@ -40,11 +40,26 @@
       {% endif %}
     </div>
   </div>
-  <div class="col-8 col-sm-3">
+  <div class="text-center">
+    {% if reviews %}
     {% for review in reviews %}
-        <p>{{ review.rating }}</p>
+        {% if review.rating == 1 %}
+        <p><i class="fa-solid fa-star"></i></p>
+        {% elif review.rating == 2 %}
+        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif review.rating == 3 %}
+        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif review.rating == 4 %}
+        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif review.rating == 5 %}
+        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% endif %}
         <p>{{ review.review }}</p>
     {% endfor %}
+    {% else %}
+    <p>This product doesn't currently have any reviews</p>
+    <a href="{% url 'add_review' product.id %}" class="products-button">Add review for this Product</a>
+    {% endif %}
   </div>
   
     
