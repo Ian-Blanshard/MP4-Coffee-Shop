@@ -4,6 +4,7 @@
 {% endblock%} {% block content %}
 <!-- div containing hero image and content -->
 <div class="container-fluid">
+  {{ avg_rating }}
   <!-- products page title -->
   <div class="row justify-content-center">
     <div class="col-8 mt-5 products-header">
@@ -76,11 +77,21 @@
   <div class="row justify-content-center m-3">
     <div class="col-8 col-sm-3">
       <span
-        ><p>Rating :</p>
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-        ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
-        ><i class="fa-solid fa-star"></i
-      ></span>
+        >{% if product.avg_rating %}
+        {% if product.avg_rating == 1 %}
+          <p>Rating: <i class="fa-solid fa-star"></i></p>
+        {% elif product.avg_rating == 2 %}
+          <p>Rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif product.avg_rating == 3 %}
+          <p>Rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif product.avg_rating == 4 %}
+          <p>Rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% elif product.avg_rating == 5 %}
+          <p>Rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+        {% endif %}
+      {% else %}
+      <p>This product doesn't currently have any customer ratings</p>
+      {% endif %}</span>
       <a href="{% url 'product_reviews' product.id %}" class="products-button">View customer reviews</a>
       <a href="{% url 'add_review' product.id %}" class="products-button">Add review for this Product</a>
     </div>

@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg
 from .models import Product, Category
-from django.db.models.functions import Lower
+from django.db.models.functions import Lower, Round
 from .forms import ProductForm
 
 # Create your views here.
@@ -20,7 +20,10 @@ def all_products(request):
     category = None
     # set default sort key
     sortkey = 'id'
+    # query the products rating from reviews model and add the rounded rating to product
+    products = products.annotate(avg_rating=Round(Avg('reviews__rating')))
 
+    
     
     if request.GET:
         if 'sort' in request.GET:
@@ -66,10 +69,13 @@ def product_detail(request, product_id):
     """A view to show all a single products details"""
 
     product = get_object_or_404(Product, pk=product_id)
+    product = Product.objects.annotate(
+        avg_rating=Round(Avg('reviews__rating'))
+    ).get(pk=product_id)
     context = {
         'product': product,
     }
-
+    
     return render(request, 'products/product_details.html', context)
 
 
