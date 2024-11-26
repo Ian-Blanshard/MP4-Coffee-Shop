@@ -52,7 +52,7 @@ def edit_review(request, review_id):
 
     if not (request.user.is_superuser or request.user == review.user):
         messages.error(request, "You do not have the authorisation to edit this review")
-        return redirect('product_reviews')
+        return redirect('product_reviews', product_id=review.product.id)
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
@@ -69,10 +69,21 @@ def edit_review(request, review_id):
     }
     return render(request, 'reviews/edit_review.html', context)
 
-@login_required
-def delete_review(request, product_id):
 
-    return render(request, product_id)
+@login_required
+def delete_review(request, review_id):
+
+    review = get_object_or_404(Reviews, pk=review_id)
+
+    if not (request.user.is_superuser or request.user == review.user):
+        messages.error(request, "You do not have the authorisation to delete this review")
+        return redirect('product_reviews', product_id=review.product.id)
+    else:
+        review.delete()
+        messages.success(request, "Review Deleted")
+        return redirect('product_reviews', product_id=review.product.id)
+
+
 
 @login_required
 def view_all_reviews(request):
