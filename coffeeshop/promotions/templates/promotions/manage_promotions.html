@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+{% endblock%} {% block content %}
+<!-- div containing hero image and content -->
+<div class="container-fluid">
+  <!-- products page title -->
+  <div class="row">
+    <div class="col text-center mt-5 products-header">
+      <h1>Add promotions</h1>
+    </div>
+  </div>
+  <!-- products page products container -->
+  <div class="row justify-content-center">
+    <!-- loop through each product and create container -->
+    {% for product in products %}
+      <div class="">
+        <div class="row">
+          <!-- container with product info / buttons -->
+          <div class="col text-center">
+            <p>{{ product.product_name }}</p>
+            <p>Price : £{{ product.price }}</p>
+            
+            
+            <div class="d-inline-block">
+              <a
+                href="{% url 'product_detail' product.id %}"
+                class="d-block products-button"
+                >View product details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

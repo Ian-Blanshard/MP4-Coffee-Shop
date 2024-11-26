@@ -30,6 +30,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profiles/', include('profiles.urls')),
     path('reviews/', include('reviews.urls')),
+    path('promotions/', include('promotions.urls')),
 ]
 
 if settings.DEBUG:
