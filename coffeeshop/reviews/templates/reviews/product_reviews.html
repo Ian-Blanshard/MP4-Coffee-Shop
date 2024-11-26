@@ -41,34 +41,50 @@
     </div>
   </div>
   <div class="text-center">
-    {% if reviews %}
-    {% for review in reviews %}
-        {% if review.rating == 1 %}
-        <p><i class="fa-solid fa-star"></i></p>
-        {% elif review.rating == 2 %}
-        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        {% elif review.rating == 3 %}
-        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        {% elif review.rating == 4 %}
-        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        {% elif review.rating == 5 %}
-        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        {% endif %}
-        <p>{{ review.review }}</p>
-    {% endfor %}
-    {% else %}
-    <p>This product doesn't currently have any reviews</p>
-    <a href="{% url 'add_review' product.id %}" class="products-button">Add review for this Product</a>
+    {% if reviews %} {% for review in reviews %} 
+    {% if review.rating == 1 %}
+    <p><i class="fa-solid fa-star"></i></p>
+    {% elif review.rating == 2 %}
+    <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+    {% elif review.rating == 3 %}
+    <p>
+      <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+      ><i class="fa-solid fa-star"></i>
+    </p>
+    {% elif review.rating == 4 %}
+    <p>
+      <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+      ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+    </p>
+    {% elif review.rating == 5 %}
+    <p>
+      <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+      ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+      ><i class="fa-solid fa-star"></i>
+    </p>
     {% endif %}
+    <p>{{ review.review }}</p>
+    {% if request.user.is_authenticated %} 
+    {% if request.user == review.user or request.user.is_superuser %}
+    <a href="{% url 'edit_review' review.review_id %}" class="products-button"
+      >Edit Review</a
+    >
+    {% endif %} {% endif %} {% endfor %} {% else %}
+    <p>This product doesn't currently have any reviews</p>
+    {% endif %}
+
+    <a href="{% url 'add_review' product.id %}" class="products-button"
+      >Add review for this Product</a
+    >
   </div>
-  
-    
-    
-    <!-- container with back to products button -->
-    <div class="row">
-      <a href="{% url 'product_detail' product.id %}" class="col-3 offset-8 products-button">Back to Product</a>
-      
-    </div>
+
+  <!-- container with back to products button -->
+  <div class="row">
+    <a
+      href="{% url 'product_detail' product.id %}"
+      class="col-3 offset-8 products-button"
+      >Back to Product</a
+    >
   </div>
-  {% endblock %}
 </div>
+{% endblock %}

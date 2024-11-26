@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from products.models import Product
 from .forms import ReviewForm
+from .models import Reviews
 
 # Create your views here.
 def product_reviews(request, product_id):
@@ -14,7 +17,7 @@ def product_reviews(request, product_id):
     }
     return render(request, 'reviews/product_reviews.html', context)
 
-
+@login_required
 def add_review(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
@@ -26,7 +29,8 @@ def add_review(request, product_id):
             
             review.user = request.user.userprofile 
             review.product = product
-            review.save()  
+            review.save() 
+            messages.success(request, "Review Added")
             return redirect('product_detail', product_id=product.id)
         else:
             messages.error(request, "Please ensure the review form is filled in correctly")
@@ -41,17 +45,40 @@ def add_review(request, product_id):
     return render(request, 'reviews/add_review.html', context)
     
 
+@login_required
+def edit_review(request, review_id):
 
-def edit_review(request):
+    review = get_object_or_404(Reviews, pk=review_id)
 
-    return render(request)
+    if not (request.user.is_superuser or request.user == review.user):
+        messages.error(request, "You do not have the authorisation to edit this review")
+        return redirect('product_reviews')
 
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Review updated")
+            return redirect('product_reviews', product_id=review.product.id)
+    else:
+        form = ReviewForm(instance=review)
 
-def delete_review(request):
+    context = {
+        'form': form,
+        'review': review,
+    }
+    return render(request, 'reviews/edit_review.html', context)
 
-    return render(request)
+@login_required
+def delete_review(request, product_id):
 
+    return render(request, product_id)
 
+@login_required
 def view_all_reviews(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    else:
 
-    return render(request)
+        return render(request)

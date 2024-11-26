@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="" />
+{% endblock%} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col5 offset-1">
+      <h1 class="mt-5 products-header">Edit review for {{ product.product_name }}</h1>
+    </div>
+  </div>
+  <div class="col-12 col-lg-6">
+    
+    <form
+      class="mt-3"
+      action="{% url 'edit_review' review.review_id %}"
+      method="POST"
+      
+    >
+      {% csrf_token %} {{ form|crispy }}
+      <button class="">
+        Edit review
+      </button>
+    </form>
+  </div>
+  
+</div>
+  {% endblock %}
