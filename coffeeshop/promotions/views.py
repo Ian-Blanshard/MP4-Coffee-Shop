@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from products.models import Product
 
 def manage_promotions(request):
-    return render(request, 'promotions/manage_promotions.html')
+    products = Product.objects.all()
+
+    context = {
+        'products': products
+    }
+    return render(request, 'promotions/manage_promotions.html', context)
