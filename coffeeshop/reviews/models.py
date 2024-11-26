@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Reviews(models.Model):
     """model for reviews"""
+    class Meta:
+        verbose_name_plural = 'reviews'
 
     product = models.ForeignKey('products.Product', on_delete=models.SET_NULL, null=True, blank=False, related_name='reviews')
     user = models.ForeignKey(
