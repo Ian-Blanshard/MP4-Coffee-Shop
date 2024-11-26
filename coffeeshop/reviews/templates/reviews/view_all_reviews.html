@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<!-- homepage specific CSS link -->
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+{% endblock%} {% block content %}
+<!-- div containing hero image and content -->
+<div class="container-fluid">
+  <!-- products page title -->
+  <div class="row justify-content-center">
+    <div class="col-8 mt-5 products-header">
+      <h1>All Reviews</h1>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  {% if reviews %} {% for review in reviews %}
+  <h3>Review for {{ review.product.product_name }}</h3> {% if review.rating == 1 %}
+  <p><i class="fa-solid fa-star"></i></p>
+  {% elif review.rating == 2 %}
+  <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+  {% elif review.rating == 3 %}
+  <p>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+    ><i class="fa-solid fa-star"></i>
+  </p>
+  {% elif review.rating == 4 %}
+  <p>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+    ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+  </p>
+  {% elif review.rating == 5 %}
+  <p>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+    ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+    ><i class="fa-solid fa-star"></i>
+  </p>
+  {% endif %}
+  <p>{{ review.review }}</p>
+  {% if request.user.is_authenticated %} 
+  {% if request.user == review.user or request.user.is_superuser %}
+  <a href="{% url 'delete_review' review.review_id %}" class="products-button"
+    >Delete Review</a
+  >
+  {% endif %} {% endif %} {% endfor %} {% else %}
+  <p>There are no any reviews to view</p>
+  {% endif %}
+</div>
+
+{% endblock %}

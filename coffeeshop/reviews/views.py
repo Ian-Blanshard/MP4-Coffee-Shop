@@ -81,7 +81,11 @@ def delete_review(request, review_id):
     else:
         review.delete()
         messages.success(request, "Review Deleted")
-        return redirect('product_reviews', product_id=review.product.id)
+        referer = request.META.get('HTTP_REFERER', '')
+        if 'reviews' in referer:
+            return redirect('product_reviews', product_id=review.product.id)
+        else:
+            return redirect('view_all_reviews')
 
 
 
@@ -91,5 +95,9 @@ def view_all_reviews(request):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
     else:
+        reviews = Reviews.objects.all()
+        context = {
+            'reviews': reviews
+        }
 
-        return render(request)
+        return render(request, 'reviews/view_all_reviews.html', context)
