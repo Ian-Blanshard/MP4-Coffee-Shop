@@ -82,10 +82,10 @@ def delete_review(request, review_id):
         review.delete()
         messages.success(request, "Review Deleted")
         referer = request.META.get('HTTP_REFERER', '')
-        if 'reviews' in referer:
-            return redirect('product_reviews', product_id=review.product.id)
+        if 'view_reviews' in referer:
+            return redirect('view_all_reviews')   
         else:
-            return redirect('view_all_reviews')
+            return redirect('product_reviews', product_id=review.product.id)
 
 
 
