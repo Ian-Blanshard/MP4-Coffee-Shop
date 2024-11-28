@@ -70,12 +70,20 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    discounted_price = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True, editable=False)
 
     def save(self, *args, **kwargs):
         """
         overwrite save to calculate lineitem total
         """
-        self.lineitem_total = self.product.price * self.quantity
+        discount = getattr(self.product, 'discount', None)
+        if discount:
+            self.discounted_price = discount.apply_discount(self.product.price)
+        else:
+            self.discounted_price = self.product.price
+        
+        self.lineitem_total = self.discounted_price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):

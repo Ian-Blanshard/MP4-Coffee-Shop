@@ -12,13 +12,24 @@ def bag_contents(request):
 
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
+
+        discount = getattr(product, 'discount', None)
+        if discount:
+            
+            price_after_discount = discount.apply_discount(product.price)
+        else:
+            price_after_discount = product.price
+        
+        item_total = quantity * price_after_discount
+        total += item_total
         product_count += quantity
-        item_total = quantity * product.price
+        
+        
         bag_items.append({
             'item_id': item_id,
             'quantity': quantity,
             'product': product,
+            'price_after_discount': price_after_discount,  
             'item_total': item_total,
         })
 

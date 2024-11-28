@@ -1,39 +1,32 @@
-{% extends 'base.html' %} {% load static %} {% block extra_css %}
-<!-- homepage specific CSS link -->
-<link rel="stylesheet" href="{% static 'css/products.css' %}" />
-{% endblock%} {% block content %}
-<!-- div containing hero image and content -->
-<div class="container-fluid">
-  <!-- products page title -->
-  <div class="row">
-    <div class="col text-center mt-5 products-header">
-      <h1>Add promotions</h1>
-    </div>
-  </div>
-  <!-- products page products container -->
-  <div class="row justify-content-center">
-    <!-- loop through each product and create container -->
-    {% for product in products %}
-      <div class="">
-        <div class="row">
-          <!-- container with product info / buttons -->
-          <div class="col text-center">
-            <p>{{ product.product_name }}</p>
-            <p>Price : £{{ product.price }}</p>
-            
-            
-            <div class="d-inline-block">
-              <a
-                href=""
-                class="d-block products-button"
-                >Add promotion</a
-              >
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Manage Promotions</h1>
+    <div class="row">
+        <!-- loop through the product_data dictionary for each item-->
+        {% for item in product_data %}
+            <div class="col-md-4">
+                <div class="">
+                    <!-- access the product models product_name and price values-->
+                        <h5 class="">{{ item.product.product_name }}</h5>
+                        <p>Current Price: £{{ item.product.price }}</p>
+                        {% if item.discounted_price %}
+                            <p>Current Discount: {{ item.product.discount.percentage }}%</p>
+                            <p>Discounted Price: £{{ item.discounted_price }}</p>
+                        {% else %}
+                            <p>This item currently has no discount applied</p>
+                        {% endif %}
+                        <!-- create the cripsy discount form to add discount percentage-->
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ item.form|crispy }}
+                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                            <button type="submit" class="mt-2">Apply Discount</button>
+                        </form>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    
-    {% endfor %}
-  </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

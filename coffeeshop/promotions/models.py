@@ -11,4 +11,4 @@ class Discount(models.Model):
         return price - (price * self.percentage / 100)
 
     def __str__(self):
-        return f"{self.product.name} - {self.percentage}% off"
+        return f"{self.product.product_name} - {self.percentage}% off"
