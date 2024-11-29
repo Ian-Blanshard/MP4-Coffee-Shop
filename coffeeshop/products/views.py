@@ -40,8 +40,12 @@ def all_products(request):
 
         if 'category' in request.GET:
             category = request.GET['category']
-            if Category.objects.filter(name=category).exists():
+            if category == 'special_offers':
+                # get all product with current discount applied 
+                products = products.filter(discount__isnull=False)
+            elif Category.objects.filter(name=category).exists():
                 products = products.filter(category__name=category)
+            
 
         if 'q' in request.GET:
             query = request.GET['q']

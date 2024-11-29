@@ -36,9 +36,14 @@
       {% endif %}
     </div>
     <!-- container with product info -->
-    <div class="col-8 col-sm-3 d-flex flex-column justify-content-center">
+    <div class="col-8 col-sm-3 d-flex flex-column justify-content-center"> 
       <p class="">Size :</p>
+      {% if product.discount %}
+              <p class="line-through">Original Price: £{{ product.price }}</p>
+              <p>Discounted Price: £{{ product.discount.discounted_price }}</p>
+      {% else %}
       <p class="">Price : £{{ product.price }}</p>
+      {% endif %}
       {% if product.category %}
       <p class="">Category : {{ product.category.friendly_name }}</p>
       {% endif %}
@@ -46,6 +51,7 @@
     <div
       class="d-none d-sm-block col-sm-3 d-flex flex-column justify-content-center"
     >
+    {% if product.discount %}
       <p>
         <!-- svg drawn in figma and exported-->
         <svg
@@ -67,10 +73,11 @@
             dominant-baseline="middle"
             text-anchor="middle"
           >
-            10% off
+          {{product.discount}}
           </text>
         </svg>
       </p>
+      {% endif %}
     </div>
   </div>
   <!-- container with product rating / quantity select/ add to basket button -->

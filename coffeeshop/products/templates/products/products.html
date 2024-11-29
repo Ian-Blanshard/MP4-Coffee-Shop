@@ -93,6 +93,7 @@
           <!-- container with product info / buttons -->
           <div class="col text-center">
             {% if product.discount %}
+              <p>{{ product.product_name }}</p>
               <p>{{product.discount}}</p>
               <p class="line-through">Original Price: £{{ product.price }}</p>
               <p>Discounted Price: £{{ product.discount.discounted_price }}</p>

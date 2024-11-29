@@ -16,4 +16,4 @@ class Discount(models.Model):
         return self.apply_discount(self.product.price)
 
     def __str__(self):
-        return f"{self.product.product_name} - {self.percentage}% off"
+        return f"{self.percentage}% off"
