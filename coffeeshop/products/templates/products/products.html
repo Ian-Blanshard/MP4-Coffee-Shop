@@ -92,8 +92,14 @@
         <div class="row">
           <!-- container with product info / buttons -->
           <div class="col text-center">
-            <p>{{ product.product_name }}</p>
-            <p>Price : £{{ product.price }}</p>
+            {% if product.discount %}
+              <p>{{product.discount}}</p>
+              <p class="line-through">Original Price: £{{ product.price }}</p>
+              <p>Discounted Price: £{{ product.discount.discounted_price }}</p>
+            {% else %}
+              <p>{{ product.product_name }}</p>
+              <p>Price : £{{ product.price }}</p>
+            {% endif %}
             {% if product.avg_rating %}
               {% if product.avg_rating == 1 %}
                 <p>Rating: <i class="fa-solid fa-star"></i></p>

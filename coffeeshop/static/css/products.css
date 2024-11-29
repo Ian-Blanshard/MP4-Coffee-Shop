@@ -33,3 +33,9 @@
     font-size: 2rem;
     fill: black;
 }
+
+
+/* line through for old price */
+.line-through {
+    text-decoration: line-through;
+  }

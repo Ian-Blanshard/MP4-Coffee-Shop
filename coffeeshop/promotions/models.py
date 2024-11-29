@@ -10,6 +10,10 @@ class Discount(models.Model):
         """Calculate discounted price."""
         discounted_price = price - (price * self.percentage / 100)
         return round(discounted_price, 2)
+    
+    def discounted_price(self):
+        """get the discounted price to display in template"""
+        return self.apply_discount(self.product.price)
 
     def __str__(self):
         return f"{self.product.product_name} - {self.percentage}% off"

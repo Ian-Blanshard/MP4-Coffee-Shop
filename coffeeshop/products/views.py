@@ -24,7 +24,6 @@ def all_products(request):
     products = products.annotate(avg_rating=Round(Avg('reviews__rating')))
 
     
-    
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
