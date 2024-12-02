@@ -35,7 +35,7 @@
       aria-labelledby="user-options"
     >
       {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
-      <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+      <a href="{% url 'add_product' %}" class="dropdown-item">Add Product To Store</a>
       <a href="{% url 'manage_promotions' %}" class="dropdown-item">Manage Promotions</a>
       <a href="{% url 'view_all_reviews' %}" class="dropdown-item">Manage Reviews</a>
       {% endif %}
