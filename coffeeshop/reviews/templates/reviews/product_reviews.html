@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'css/products.css' %}" />
 {% endblock%} {% block content %}
 <!-- div containing hero image and content -->
-<div class="container-fluid">
+<div class="container-fluid text-center">
   <!-- products page title -->
   <div class="row justify-content-center">
     <div class="col-8 mt-5 products-header">
@@ -33,7 +33,6 @@
         />
       </a>
       {% endif %}
-      <p class="">Size :</p>
       <p class="">Price : £{{ product.price }}</p>
       {% if product.category %}
       <p class="">Category : {{ product.category.friendly_name }}</p>
@@ -80,10 +79,10 @@
   </div>
 
   <!-- container with back to products button -->
-  <div class="row">
+  <div class="mt-3">
     <a
       href="{% url 'product_detail' product.id %}"
-      class="col-3 offset-8 products-button"
+      class="button"
       >Back to Product</a
     >
   </div>

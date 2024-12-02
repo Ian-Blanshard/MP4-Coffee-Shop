@@ -133,7 +133,7 @@
             <div class="d-inline-block">
               <a
                 href="{% url 'product_detail' product.id %}"
-                class="d-block products-button mb-5"
+                class="d-block button mb-5"
                 >View product details</a
               >
             </div>
@@ -145,7 +145,7 @@
     <div class="col-8 m-2 mb-5 offset-2 text-center">
       <!-- display products home button if no query/sort/category in url -->
       {% if request.GET.category or request.GET.q or request.GET.sort %}
-        <a href="{% url 'products' %}" class="products-button">Products Home</a>
+        <a href="{% url 'products' %}" class="button">Products Home</a>
       {% endif %}
     </div>
   </div>
