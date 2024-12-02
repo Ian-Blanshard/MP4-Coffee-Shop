@@ -49,6 +49,7 @@ def add_review(request, product_id):
 def edit_review(request, review_id):
 
     review = get_object_or_404(Reviews, pk=review_id)
+    product = review.product
 
     if not (request.user.is_superuser or request.user == review.user):
         messages.error(request, "You do not have the authorisation to edit this review")
@@ -66,6 +67,7 @@ def edit_review(request, review_id):
     context = {
         'form': form,
         'review': review,
+        'product': product,
     }
     return render(request, 'reviews/edit_review.html', context)
 
