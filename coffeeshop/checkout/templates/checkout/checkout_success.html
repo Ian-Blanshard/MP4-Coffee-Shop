@@ -4,30 +4,94 @@
 {% endblock%} {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col5 offset-1">
-      <h1 class="mt-5 products-header">Checkout</h1>
+    <div class="col-12 col-sm-6 mx-auto text-center">
+      <h1 class="mt-5 header">Checkout</h1>
     </div>
   </div>
-  <div class="col-12 col-sm-6">
-    <p>Thank you for your order, the details are below. A confirmation email will be sent to {{ order.email }}
+  <div class="col-12 col-sm-6 mx-auto text-center m-4">
+    <p>
+      Thank you for your order, the details are below. A confirmation email will
+      be sent to {{ order.email }}
     </p>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 mx-auto">
+      <table class="table table-borderless">
+        <tbody>
+          <!-- Order Details -->
+          <tr>
+            <th>Order Number :</th>
+            <td class="text-end">{{ order.order_number }}</td>
+          </tr>
+          <tr>
+            <th>Order Date :</th>
+            <td class="text-end">{{ order.date }}</td>
+          </tr>
+          <tr>
+            <th colspan="2">Order Items :</th>
+          </tr>
+          {% for item in order.lineitems.all %}
+          <tr>
+            <td>{{ item.product.product_name }}</td>
+            <td class="text-end">{{ item.quantity }} @ £{{ item.product.price }} each</td>
+          </tr>
+          {% endfor %}
+          <!-- Delivery Details -->
+          <tr>
+            <th colspan="2">Delivery Details :</th>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td class="text-end">{{ order.full_name }}</td>
+          </tr>
+          <tr>
+            <td>Address Line 1</td>
+            <td class="text-end">{{ order.street_address1 }}</td>
+          </tr>
+          {% if order.postcode %}
+          <tr>
+            <td>Postcode</td>
+            <td class="text-end">{{ order.postcode }}</td>
+          </tr>
+          {% endif %}
+          <tr>
+            <td>Country</td>
+            <td class="text-end">{{ order.country }}</td>
+          </tr>
+          <!-- Billing Details -->
+          <tr>
+            <th colspan="2">Billing Details :</th>
+          </tr>
+          <tr>
+            <td>Order Total</td>
+            <td class="text-end">{{ order.order_total }}</td>
+          </tr>
+          <tr>
+            <td>Delivery Cost</td>
+            <td class="text-end">{{ order.delivery_cost }}</td>
+          </tr>
+          <tr>
+            <td>Grand Total</td>
+            <td class="text-end">{{ order.grand_total }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>
+
 <div class="row">
-  <div class="col-6 offset-6 mt-5 text-center">
+  <div class="col-10 m-5 text-center">
     {% if from_profile %}
-    <a href="{% url 'profile' %}" class="products-button">
+    <a href="{% url 'profile' %}" class="button">
       <span class="">Return to profile</span>
     </a>
     {% endif %}
-    <a href="{% url 'products' %}" class="products-button">
+    <a href="{% url 'products' %}" class="button mb-5">
       <span class="">Return to shop</span>
-    </a>
-    <a href="" class="">
-      <span class="">View profile</span>
-      <span class="icon">
-        <i class="fas fa-lock"></i>
-      </span>
     </a>
   </div>
 </div>
