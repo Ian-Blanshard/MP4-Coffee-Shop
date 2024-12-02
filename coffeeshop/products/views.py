@@ -89,7 +89,7 @@ def add_product(request):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
+        form = ProductForm(request.POST, request.FILES, request=request)
         if form.is_valid():
             product = form.save()
             messages.success(request, 'Successfully added product!')
@@ -97,7 +97,7 @@ def add_product(request):
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
-        form = ProductForm()
+        form = ProductForm(request=request)
         
     template = 'products/add_product.html'
     context = {
