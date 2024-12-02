@@ -61,8 +61,8 @@
           <ul class="dropdown-menu bg-black">
             {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
             <a href="{% url 'add_product' %}" class="dropdown-item text-white">Product Management</a>
-            <a href="{% url 'manage_promotions' %}" class="dropdown-item">Manage Promotions</a>
-      <a href="{% url 'view_all_reviews' %}" class="dropdown-item">Manage Reviews</a>
+            <a href="{% url 'manage_promotions' %}" class="dropdown-item text-white">Manage Promotions</a>
+            <a href="{% url 'view_all_reviews' %}" class="dropdown-item text-white">Manage Reviews</a>
             {% endif %}
             <a href="{% url 'profile' %}" class="dropdown-item text-white">My Profile</a>
             <a

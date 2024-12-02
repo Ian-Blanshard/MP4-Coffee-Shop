@@ -1,31 +1,62 @@
-{% extends 'base.html' %} {% load static %} {% block extra_css %}
-<!-- homepage specific CSS link -->
-<link rel="stylesheet" href="" />
-{% endblock%} {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col5 offset-1">
-      <h1 class="mt-5 products-header">My profile</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h1 class="mt-5 header">My Profile</h1>
+      <p>Default Delivery Information</p>
+      <form
+        class="mt-3"
+        action="{% url 'profile' %}"
+        method="POST"
+        id="profile-update-form"
+      >
+        {% csrf_token %} {{ form|crispy }}
+        <button class="button">Update Information</button>
+      </form>
     </div>
   </div>
-  <div class="col-12 col-lg-6">
-    <p class="">Default Delivery Information</p>
-    <form
-      class="mt-3"
-      action="{% url 'profile' %}"
-      method="POST"
-      id="profile-update-form"
-    >
-      {% csrf_token %} {{ form|crispy }}
-      <button class="">
-        Update Information
-      </button>
-    </form>
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h5 class="m-4 header">Order History</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless">
+          <thead>
+            <th>Order #</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td>
+                <a
+                  href="{% url 'order_history' order.order_number %}"
+                  title="{{ order.order_number }}"
+                  class="site-link"
+                >
+                  {{ order.order_number|truncatechars:8 }}
+                </a>
+              </td>
+              <td>{{ order.date }}</td>
+              <td>
+                <ul>
+                  {% for item in order.lineitems.all %}
+                  <li>
+                    {{item.product.product_name}} x{{ item.quantity }}
+                  </li>
+                  {% endfor %}
+                </ul>
+              </td>
+              <td>£{{ order.grand_total }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <div class="col-12 col-lg-6">
-    <p class="">Order History</p>
-    {{ orders }}
-  </div>
-
-  {% endblock %}
 </div>
+
+{% endblock %}

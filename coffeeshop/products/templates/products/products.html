@@ -48,9 +48,16 @@
           </li>
           <li>
             <a
-              href="?sort=rating&direction=desc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}"
+              href="?sort=avg_rating&direction=desc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}"
               class="dropdown-item"
-              >Rating</a
+              >Rating (High to Low)</a
+            >
+          </li>
+          <li>
+            <a
+              href="?sort=avg_rating&direction=asc{% if selected_category %}&category={{ selected_category }}{% endif %}{% if search_term %}&q={{ search_term }}{% endif %}"
+              class="dropdown-item"
+              >Rating (Low to High)</a
             >
           </li>
         </ul>
@@ -63,8 +70,10 @@
           Price (Low to High)
         {% elif current_sorting == 'price_desc' %}
           Price (High to Low)
-        {% elif current_sorting == 'rating_desc' %}
-          Rating
+        {% elif current_sorting == 'avg_rating_desc' %}
+          Rating (High to Low)
+        {% elif current_sorting == 'avg_rating_asc' %}
+          Rating (Low to High)  
         {% endif %}</p>
         {% endif %}
       </div>
