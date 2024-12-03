@@ -32,7 +32,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'your_default_stripe_webhook_se
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['coffee-shop-mp4.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['coffee-shop-mp4-a883163ad215.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
