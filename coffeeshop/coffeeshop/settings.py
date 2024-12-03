@@ -10,23 +10,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
-from env import MY_SECRET_KEY, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET
+import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+if os.path.exists(BASE_DIR / '.env'):
+    load_dotenv(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = MY_SECRET_KEY
+SECRET_KEY = os.getenv('MY_SECRET_KEY', 'your_default_secret_key')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'your_default_stripe_public_key')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'your_default_stripe_secret_key')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'your_default_stripe_webhook_secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['coffee-shop-mp4.herokuapp.com','localhost']
 
 
 # Application definition
@@ -123,12 +129,17 @@ WSGI_APPLICATION = 'coffeeshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -187,9 +198,7 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 # stripe 
 
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PUBLIC_KEY = (STRIPE_PUBLIC_KEY)
-STRIPE_SECRET_KEY = (STRIPE_SECRET_KEY)
-STRIPE_WH_SECRET = (STRIPE_WH_SECRET)
+
 
 
 # Default primary key field type
