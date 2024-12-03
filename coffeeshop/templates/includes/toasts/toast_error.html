@@ -1,12 +1,16 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <strong class="me-auto">Error</strong>
+  <div class="toast-body position-relative">
     <button
       type="button"
-      class="btn-close"
+      class="btn-close ms-3 p-2 position-absolute top-0 end-0"
       data-bs-dismiss="toast"
       aria-label="Close"
     ></button>
+    <div class="d-flex align-items-center">
+      <strong class="me-3">
+        <i class="fa-solid fa-circle-xmark fa-2x"></i>
+      </strong>
+      <p class="m-4 text-center">{{ message }}</p>
+    </div>
   </div>
-  <div class="toast-body">{{ message }}</div>
 </div>

@@ -1,17 +1,19 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <strong class="me-auto">Success</strong>
+  <div class="toast-body position-relative">
     <button
       type="button"
-      class="btn-close"
+      class="btn-close ms-3 p-2 position-absolute top-0 end-0"
       data-bs-dismiss="toast"
       aria-label="Close"
     ></button>
-  </div>
-  <div class="toast-body">
-    {{ message }}
-    <div class="mt-2 pt-2 border-top">
-      <button type="button" class="btn btn-primary btn-sm">View Basket</button>
+    <div class="d-flex align-items-center">
+      <strong class="me-3">
+        <i class="text-success fa-solid fa-check fa-2x"></i>
+      </strong>
+      <p class="m-4 text-center">{{ message }}</p>
     </div>
+  </div>
+  <div class="m-2 p-2 border-top text-center">
+    <a href="{% url 'view_bag' %}" class="button">View Basket</a>
   </div>
 </div>
