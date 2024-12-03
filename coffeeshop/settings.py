@@ -29,6 +29,22 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'your_default_stripe_public_k
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'your_default_stripe_secret_key')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'your_default_stripe_webhook_secret')
 
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'coffee-shop-mp4'
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -50,6 +66,8 @@ INSTALLED_APPS = [
     # cripsy forms
     "crispy_forms",
     "crispy_bootstrap5",
+    # storages
+    'storages',
     # my apps
     'core',
     'products',
@@ -177,8 +195,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
 
 STATIC_URL = '/static/'
 
@@ -205,4 +222,8 @@ STRIPE_CURRENCY = 'gbp'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
 
