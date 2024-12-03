@@ -11,7 +11,7 @@ class Reviews(models.Model):
     user = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, null=False, blank=False, related_name='reviews'
     )
-    review_id = models.AutoField(primary_key=True)
+    review_id = review_id = models.AutoField(primary_key=True, editable=False)
     review = models.TextField(max_length=1000, blank=True)
     rating = models.FloatField(validators=[MinValueValidator(
         1), MaxValueValidator(5)], null=False, blank=False)
