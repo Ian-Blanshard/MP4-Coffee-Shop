@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
-from whitenoise import WhiteNoise
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -200,12 +200,15 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 STORAGES = {
-    # 
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    'default': {
+        'BACKEND': 'custom_storages.MediaStorage',
+        'LOCATION': 'media',
+    },
+    'staticfiles': {
+        'BACKEND': 'custom_storages.StaticStorage',
+        'LOCATION': 'static',
     },
 }
-
 
 STATIC_URL = '/static/'
 
@@ -217,7 +220,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 
 DEFAULT_FROM_EMAIL = 'coffeeshop@example.com'
