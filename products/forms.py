@@ -21,5 +21,5 @@ class ProductForm(forms.ModelForm):
         """check the sku is unique when is valid is called"""
         sku = self.cleaned_data.get('sku')
         if Product.objects.filter(sku=sku).exists():
-            messages.error(self.request, 'This SKU is already in use. Please use a different SKU.')
+            messages.error('This SKU is already in use. Please use a different SKU.')
         return sku

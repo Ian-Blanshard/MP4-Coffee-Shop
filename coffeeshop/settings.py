@@ -100,7 +100,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                  # ensures media is accessible accross all apps
-                 'django.template.context_processors.media',
+                'django.template.context_processors.media',
                 # ensures bag is accessible accross all apps
                 'bag.contexts.bag_contents',
             ],
