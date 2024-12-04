@@ -20,6 +20,7 @@ class ProductForm(forms.ModelForm):
     def clean_sku(self):
         """check the sku is unique when is valid is called"""
         sku = self.cleaned_data.get('sku')
-        if Product.objects.filter(sku=sku).exists():
-            messages.error('This SKU is already in use. Please use a different SKU.')
+        # exclude the product instance from the check if is coming from edit form
+        if Product.objects.filter(sku=sku).exclude(pk=self.instance.pk).exists():
+            messages.error(self.request, 'This SKU is already in use. Please use a different SKU.')
         return sku
