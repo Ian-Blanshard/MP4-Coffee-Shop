@@ -227,9 +227,20 @@ My app demonstrates CRUD functionality as outlined below:
 
 #### Products page
 
+The products page display all products to the user.
+
+It also contains features to view product by category or to search for terms which will display products which have the search term in both there name and description.
+
+The user can see the following product details for each prodcut displayed:
+product image, its price (including any discounts), its average review rating and category. The user can click the view products details page to see further information on the product.
+
+The product hpage also has a sort button which will sort product either by price or ratings in both descending and ascending orders.
+
 ***
 
 #### Products detail page
+
+The products detail page 
 
 ***
 
@@ -258,6 +269,10 @@ My app demonstrates CRUD functionality as outlined below:
 The 404 page is designed to show when the page the user is trying to view can't be returned, for example if they enter an incorrect URL, the page has been moved or deleted, or there is a broken link. The 404 page contains the navbar, some simple text and a button to return the user to the homepage. 
 
 ![404 page]()
+
+#### Stripe webhook handlers
+
+***
 
 ### Users with accounts features 
 
