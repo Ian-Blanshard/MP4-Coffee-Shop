@@ -44,7 +44,7 @@
   <div class="text-center">
     <div class="row justify-content-center">
       <div class="col-8 col-sm-3">
-    {% if reviews_reviews.review %} {% for review in reviews %}
+    {% if reviews %} {% for review in reviews %}
       {% if review.rating == 1 %}
     <p class="mt-4"><i class="fa-solid fa-star"></i></p>
     {% elif review.rating == 2 %}

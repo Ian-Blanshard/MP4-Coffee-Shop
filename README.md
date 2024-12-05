@@ -172,7 +172,7 @@ As I am using django/ django allauths models for managing users and login. The s
 
 #### The color scheme for the site
 
-#### The font used for the site
+#### The fonts used for the site
 
 <br>
 
@@ -197,6 +197,8 @@ My app demonstrates CRUD functionality as outlined below:
 ***
 
 ### Feature <a name="feature"></a>
+
+### All user features
 
 ***
 
@@ -223,11 +225,69 @@ My app demonstrates CRUD functionality as outlined below:
 
 ***
 
+#### Products page
+
+***
+
+#### Products detail page
+
+***
+
+#### Customer reviews page
+
+***
+
+#### Shopping bag
+
+***
+
+#### Checkout page
+
+***
+
+#### Checkout success page
+
+***
+
+#### Toasts 
+
+***
+
 #### 404 page
 
 The 404 page is designed to show when the page the user is trying to view can't be returned, for example if they enter an incorrect URL, the page has been moved or deleted, or there is a broken link. The 404 page contains the navbar, some simple text and a button to return the user to the homepage. 
 
 ![404 page]()
+
+### Users with accounts features 
+
+#### My profile page 
+
+***
+
+#### Order history
+
+***
+
+#### Add product reviews
+
+***
+
+### Superuser features
+
+#### Manage promotions
+
+***
+
+#### Add products to store page
+
+***
+
+#### Manage reviews
+
+***
+
+
 
 <br>
 
@@ -243,6 +303,8 @@ This Project uses the following languages:
 * Python
 
 [PostgreSQL](https://www.postgresql.org/) was used as the database to store and manage application data.
+
+[Amazon webservices s3](https://aws.amazon.com/s3/) was used to store static files and media for my site.
 
 Please see the requirements.txt for a full list of the packages used and versions in my project.
 
