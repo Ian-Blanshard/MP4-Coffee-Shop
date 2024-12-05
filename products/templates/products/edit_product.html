@@ -23,10 +23,10 @@
                         {% endif %}
                     {% endfor %}
                     <div class="text-center mt-3">
-                        <button class="button" type="submit">Edit Product</button>
+                        <button class="button" type="submit" aria-label="submit product changes">Edit Product</button>
                     </div>
                     <div class="text-center m-3">
-                    <a class="button" href="{% url 'products' %}">Cancel</a>
+                    <a class="button" href="{% url 'products' %}" aria-label="cancel and return to all products page">Cancel</a>
                 </div>
                 </form>
             </div>            

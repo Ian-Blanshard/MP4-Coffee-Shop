@@ -21,6 +21,7 @@
           class="card-img-top img-fluid"
           src="{{ product.image.url }}"
           alt="{{ product.name }}"
+          aria-label="open up product image in seperate page"
         />
       </a>
       <!-- or no image png if product has no image -->
@@ -30,6 +31,7 @@
           class="card-img-top img-fluid"
           src="{{ MEDIA_URL }}noimage.png"
           alt="{{ product.name }}"
+          aria-label="open up product image in seperate page"
         />
       </a>
       {% endif %}
@@ -98,7 +100,7 @@
       <p>This product doesn't currently have any customer ratings</p>
       {% endif %}</span>
       <div class="m-3">
-      <a href="{% url 'product_reviews' product.id %}" class="button">View customer reviews</a>
+      <a href="{% url 'product_reviews' product.id %}" class="button" aria-label="view customer reviews">View customer reviews</a>
     </div> 
     </div>
     <!-- form to add item to bag -->
@@ -119,6 +121,7 @@
                 max="99"
                 data-item_id="{{ product.id }}"
                 id="id_qty_{{ product.id }}"
+                aria-label="enter qunatity for bag"
               />
             </div>
           </div>
@@ -128,6 +131,7 @@
               type="submit"
               class="button m-2"
               value="Add to Shopping Bag"
+              aria-label="add item to shopping bag"
             />
           </div>
         </div>
@@ -145,7 +149,7 @@
     
     <!-- container with back to products button -->
     <div class="text-center m-5">
-      <a href="{% url 'products' %}" class="button m-3 d-block d-sm-inline">Back to Products</a>
+      <a href="{% url 'products' %}" class="button m-3 d-block d-sm-inline" aria-label="back to all products">Back to Products</a>
       {% if request.user.is_superuser %}
         <a href="{% url 'edit_product' product.id %}" class="button m-3 d-block d-sm-inline">Edit Product</a>
         <a href="{% url 'delete_product' product.id %}" 
