@@ -229,26 +229,40 @@ My app demonstrates CRUD functionality as outlined below:
 
 The products page display all products to the user.
 
-It also contains features to view product by category or to search for terms which will display products which have the search term in both there name and description.
+It also contains features to view products by category or to search for terms which will display products which have the search term in both there name and description.
 
 The user can see the following product details for each prodcut displayed:
 product image, its price (including any discounts), its average review rating and category. The user can click the view products details page to see further information on the product.
 
-The product hpage also has a sort button which will sort product either by price or ratings in both descending and ascending orders.
+The product page also has a sort button which will sort product either by price or ratings in both descending and ascending orders.
 
 ***
 
 #### Products detail page
 
-The products detail page 
+The products detail page contains more information on the product for the customer in the description, it also displays the average customer ratings as stars and a link to view all the customer reviews for this product.
+
+If the product is a current promotion product a star is visible which contains the text of how much the product is reduced by as a percentage.
+
+On this page the customer can select a quantity and add this selected quantity to their shopping bag.
+
+There is a button to return back to the product page.
 
 ***
 
 #### Customer reviews page
 
+The customer reviews page displays all the reviews from that current product, it shows the stars of the review and also the comment if one was left. 
+
+If the customer is logged in they have a button which can take them to a form to leave there own review of the product. They are also able to edit previous reviews of theirs.
+
+At the bottom of the page a button is avaiable to navigate back to the product.
+
 ***
 
 #### Shopping bag
+
+
 
 ***
 

@@ -101,12 +101,11 @@ li {
 =========================== product page  styles ==============================
 ============================================================================*/
 
-.product-container img {
-  border: 2px solid black; 
+.product-container img, .product-details-container img {
+  border: 1px solid black; 
   border-radius: 10px; 
-  padding: 5px;
   margin: 10px auto;
   display: block; 
-  max-width: 90%;
+  max-width: 100%;
 
 }

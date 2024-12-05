@@ -32,7 +32,9 @@
     ><i class="fa-solid fa-star"></i>
   </p>
   {% endif %}
+  {% if review.review %}
   <p>"{{ review.review }}"</p>
+  {% endif %}
   {% if request.user.is_authenticated %} 
   {% if request.user == review.user or request.user.is_superuser %}
   <a
