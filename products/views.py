@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Avg
 from .models import Product, Category
-from django.db.models.functions import Lower, Round, Coalesce
+from django.db.models.functions import Lower, Round
 from .forms import ProductForm
 
 # Create your views here.
@@ -21,8 +21,8 @@ def all_products(request):
     # set default sort key
     sortkey = 'id'
     # query the products rating from reviews model and add the rounded rating to product
-    products = products.annotate(avg_rating=Coalesce(Round(Avg('reviews__rating')), 0))
-
+    products = products.annotate(avg_rating=Round(Avg('reviews__rating')))
+    
     
     if request.GET:
         if 'sort' in request.GET:
@@ -36,6 +36,10 @@ def all_products(request):
             direction = request.GET['direction']
             if direction == 'desc':
                 sortkey = f'-{sortkey}'
+        # remove products with no rating if sortkey is rating
+        if sortkey == 'avg_rating':
+            products = products.filter(avg_rating__isnull=False)
+
         products = products.order_by(sortkey)
 
         if 'category' in request.GET:
