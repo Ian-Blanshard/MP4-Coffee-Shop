@@ -256,7 +256,7 @@ The customer reviews page displays all the reviews from that current product, it
 
 If the customer is logged in they have a button which can take them to a form to leave there own review of the product. They are also able to edit previous reviews of theirs.
 
-At the bottom of the page a button is avaiable to navigate back to the product.
+At the bottom of the page a button is available to navigate back to the product.
 
 ***
 

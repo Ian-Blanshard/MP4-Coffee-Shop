@@ -14,7 +14,7 @@
           placeholder="Search"
           aria-label="Search"
         />
-        <button class="btn bg-white border-0" type="submit">
+        <button class="btn bg-white border-0" type="submit" aria-label="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
@@ -27,6 +27,7 @@
       data-bs-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false"
+      aria-label="User profile"
       ><i class="fa-solid fa-user"></i
     ></a>
     <!-- user profile dropdown -->
@@ -54,6 +55,7 @@
       data-bs-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false"
+      aria-label="Shopping bag"
       ><i class="fa-solid fa-basket-shopping"></i
     >{%if grand_total %}
       £{{ grand_total|floatformat:2 }}
