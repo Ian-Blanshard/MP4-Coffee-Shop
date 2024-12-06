@@ -37,7 +37,7 @@ def all_products(request):
             if direction == 'desc':
                 sortkey = f'-{sortkey}'
         # remove products with no rating if sortkey is rating
-        if sortkey == 'avg_rating':
+        if sortkey == 'avg_rating' or sortkey =='-avg_rating':
             products = products.filter(avg_rating__isnull=False)
 
         products = products.order_by(sortkey)
