@@ -30,10 +30,10 @@
             >Products</a
           >
           <ul class="dropdown-menu bg-black">
-            <a href="{% url 'products'%}?category=ground_coffee" class="dropdown-item text-white">Ground Coffee</a>
-            <a href="{% url 'products'%}?category=coffee_beans" class="dropdown-item text-white">Coffee Beans</a>
-            <a href="{% url 'products'%}?category=accessories" class="dropdown-item text-white">Accessories</a>
-            <a href="{% url 'products'%}?category=special_offers" class="dropdown-item text-white">Special Offers</a>
+            <li><a href="{% url 'products'%}?category=ground_coffee" class="dropdown-item text-white">Ground Coffee</a></li>
+            <li><a href="{% url 'products'%}?category=coffee_beans" class="dropdown-item text-white">Coffee Beans</a></li>
+            <li><a href="{% url 'products'%}?category=accessories" class="dropdown-item text-white">Accessories</a></li>
+            <li><a href="{% url 'products'%}?category=special_offers" class="dropdown-item text-white">Special Offers</a></li>
           </ul>
         </li>
         <!-- secondary collapsable section for shopping bag menu -->
@@ -60,25 +60,25 @@
           >
           <ul class="dropdown-menu bg-black">
             {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
-            <a href="{% url 'add_product' %}" class="dropdown-item text-white">Add Product To Store</a>
-            <a href="{% url 'manage_promotions' %}" class="dropdown-item text-white">Manage Promotions</a>
-            <a href="{% url 'view_all_reviews' %}" class="dropdown-item text-white">Manage Reviews</a>
+            <li><a href="{% url 'add_product' %}" class="dropdown-item text-white">Add Product To Store</a></li>
+            <li><a href="{% url 'manage_promotions' %}" class="dropdown-item text-white">Manage Promotions</a></li>
+            <li><a href="{% url 'view_all_reviews' %}" class="dropdown-item text-white">Manage Reviews</a></li>
             {% endif %}
-            <a href="{% url 'profile' %}" class="dropdown-item text-white">My Profile</a>
-            <a
+            <li><a href="{% url 'profile' %}" class="dropdown-item text-white">My Profile</a></li>
+            <li><a
               href="{% url 'account_logout' %}"
               class="dropdown-item text-white"
               >Logout</a
-            >
+            ></li>
             {% else %}
-            <a
+            <li><a
               href="{% url 'account_signup' %}"
               class="dropdown-item text-white"
               >Register</a
-            >
-            <a href="{% url 'account_login' %}" class="dropdown-item text-white"
+            ></li>
+            <li><a href="{% url 'account_login' %}" class="dropdown-item text-white"
               >Login</a
-            >
+            ></li>
             {% endif %}
           </ul>
         </li>
