@@ -10,7 +10,7 @@
       <h1>Reviews of {{ product.product_name }}</h1>
     </div>
   </div>
-  <!-- products page products container -->
+  <!-- products review page products container -->
   <div class="row justify-content-center">
     <!-- loop through each product and create container -->
     <div class="col-8 col-sm-3 product-details-container">
@@ -94,7 +94,7 @@
   </div>
 
   <!-- container with back to product button/ add review button -->
-  <div class="mt-5">
+  <div class="m-5">
     <a
       href="{% url 'add_review' product.id %}"
       class="button d-block d-sm-inline m-2"
