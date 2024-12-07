@@ -1,7 +1,6 @@
 from django import forms
 from .models import Discount
 
-
 class DiscountForm(forms.ModelForm):
     class Meta:
         model = Discount
@@ -26,11 +25,4 @@ class DiscountForm(forms.ModelForm):
         labels = {
             'percentage': 'Please select a discount to apply to this product',
         }
-
-    def __init__(self, *args, **kwargs):
-        """ override the init and add product id to all id fields,
-         this ensures they are unique when multiple forms are created in a loop"""
-        product_id = kwargs.pop('product_id', None)
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['id'] = f"{field_name}_{product_id}"
+    

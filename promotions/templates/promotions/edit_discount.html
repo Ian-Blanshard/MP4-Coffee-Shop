@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mx-auto">
+  <h1 class="header text-center m-4">
+    Edit Discount for {{ product.product_name }}
+  </h1>
+  <!-- form to edit discount for product -->
+  <div class="card p-4 mb-4">
+    <p>Normal Retail Price: £{{ product.price }}</p>
+    {% if product.discounted_price %}
+    <p>Current Discount: {{ product.discount.percentage }}%</p>
+    <p>Discounted Price: £{{ product.discounted_price }}</p>
+    {% else %}
+    <p>This item currently has no discount applied</p>
+    <p>Current Price: £{{ product.price }}</p>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %} {{ form|crispy }}
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Update Discount</button>
+      </div>
+    </form>
+
+    <div class="text-center m-3">
+      <a href="{% url 'manage_promotions' %}" class="btn btn-secondary"
+        >Back to Promotions</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

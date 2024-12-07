@@ -18,13 +18,8 @@
                             <p>This item currently has no discount applied</p>
                             <p>Current Price: £{{ item.product.price }}</p>
                         {% endif %}
-                        <!-- create the cripsy discount form to add discount percentage-->
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ item.form.percentage|as_crispy_field }}
-                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
-                            <button type="submit" class="mt-2">Apply Discount</button>
-                        </form>
+                        <!-- button to go to edit_discount page -->
+                        <a href="{% url 'edit_discount' item.product.id %}" class="button">Edit Discount</a>
                 </div>
             </div>
         {% endfor %}
