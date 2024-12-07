@@ -2,11 +2,9 @@
     Core logic/payment flow for this comes from here:
     https://stripe.com/docs/payments/accept-a-payment
 */
-
 function fadeToggle(element, duration = 100) {
   // Check the current display state of the element
   const isHidden = window.getComputedStyle(element).display === "none";
-
   if (isHidden) {
     // Show the element by setting display and starting opacity at 0
     element.style.display = "block";
@@ -41,12 +39,10 @@ function fadeToggle(element, duration = 100) {
     }, 10);
   }
 }
-
 // get key/secret from the html elements and create variables
 console.log("js loaded");
 var stripePublicKey = document.getElementById("stripe-public-key").dataset.stripePublicKey;
 var clientSecret = document.getElementById("client-secret").dataset.clientSecret;
-
 // initialise stripe passing the key
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
@@ -85,7 +81,6 @@ card.addEventListener("change", function (event) {
     errorDiv.textContent = "";
   }
 });
-
 // get payment form element as a variable
 var form = document.getElementById("payment-form");
 // add event listener for submit and function when its pressed
@@ -98,13 +93,9 @@ form.addEventListener("submit", function (ev) {
   // fade out payment for and in overly
   fadeToggle(document.getElementById("payment-form"), 100);
   fadeToggle(document.getElementById("loading-overlay"), 100);
-
-  
   var saveInfoCheckbox = document.getElementById("id-save-info");
-
   // Check if the checkbox exists before trying to access its properties
   var saveInfo = saveInfoCheckbox ? saveInfoCheckbox.checked : false;
-
   var csrfToken = document.querySelector(
     'input[name="csrfmiddlewaretoken"]'
   ).value;
@@ -113,18 +104,14 @@ form.addEventListener("submit", function (ev) {
     client_secret: clientSecret,
     save_info: saveInfo,
   };
-  
   var url = "/checkout/cache_checkout_data/";
-
   // Make sure the fetch does not trigger a page reload or unnecessary intent creation
   fetch(url, {
     method: "POST",
     body: new URLSearchParams(postData),
   })
-    .then(function (response) {
-        
+    .then(function (response) {  
       if (response.ok) {
-        
         // Confirm the payment with Stripe
         stripe
           .confirmCardPayment(clientSecret, {
@@ -182,7 +169,6 @@ form.addEventListener("submit", function (ev) {
             }
           });
       } else {
-        
         var errorDiv = document.getElementById("card-errors");
         errorDiv.innerHTML = `
           <span class="icon" role="alert">
