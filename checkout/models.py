@@ -7,9 +7,11 @@ import uuid
 
 
 class Order(models.Model):
+    """model which represents a user order"""
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
-        UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+        UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -40,13 +42,17 @@ class Order(models.Model):
         """
         Update total value when items are added
         """
+        # calculate total from all line items
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
+        # check if order meets threshold for free delivery
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
+            # if not calculate delivery cost
             self.delivery_cost = self.order_total * \
                 settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
+        # calculate grand total including delivery
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 
@@ -63,13 +69,16 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """model which represents a line item in an order"""
     order = models.ForeignKey(Order, null=False, blank=False,
-                              on_delete=models.CASCADE, related_name='lineitems')
+                              on_delete=models.CASCADE,
+                              related_name='lineitems')
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+        max_digits=6, decimal_places=2, null=False, blank=False,
+        editable=False)
     discounted_price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True, editable=False)
 
@@ -77,14 +86,17 @@ class OrderLineItem(models.Model):
         """
         overwrite save to calculate lineitem total
         """
+        # check if product has any discounts
         discount = getattr(self.product, 'discount', None)
+        # if it has apply discount to price
         if discount:
             self.discounted_price = discount.apply_discount(self.product.price)
         else:
             self.discounted_price = self.product.price
-        
+        # calculate total for this line item
         self.lineitem_total = self.discounted_price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """a string represntation of the line item"""
         return f'SKU {self.product.sku} on order {self.order.order_number}'
