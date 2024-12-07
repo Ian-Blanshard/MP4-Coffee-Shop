@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container text-center">
+  <!-- Profile header div -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <h1 class="mt-5 header">My Profile</h1>
       <p>Default Delivery Information</p>
+      <!-- Form to update profile information -->
       <form
         class="mt-3"
         action="{% url 'profile' %}"
@@ -15,18 +17,24 @@
       </form>
     </div>
   </div>
-  <hr>
+  <hr />
+  <!-- Order history section -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <h5 class="m-4 header">Order History</h5>
       <div class="table-responsive">
+        <!-- Table for displaying order history -->
         <table class="table table-sm table-borderless">
+          <!-- Table header -->
           <thead>
-            <th>Order #</th>
-            <th>Date</th>
-            <th>Items</th>
-            <th>Total</th>
+            <tr>
+              <th>Order #</th>
+              <th>Date</th>
+              <th>Items</th>
+              <th>Total</th>
+            </tr>
           </thead>
+          <!-- Table body looping through all orders -->
           <tbody>
             {% for order in orders %}
             <tr>
@@ -43,9 +51,7 @@
               <td>
                 <ul>
                   {% for item in order.lineitems.all %}
-                  <li>
-                    {{item.product.product_name}} x{{ item.quantity }}
-                  </li>
+                  <li>{{item.product.product_name}} x{{ item.quantity }}</li>
                   {% endfor %}
                 </ul>
               </td>
