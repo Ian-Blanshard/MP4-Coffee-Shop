@@ -6,7 +6,7 @@ from .models import Product, Category
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['category', 'sku', 'product_name', 'description', 'price', 'image']
 
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
