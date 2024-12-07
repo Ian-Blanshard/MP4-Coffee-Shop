@@ -63,18 +63,6 @@ button, .button {
   border-radius: 5px;
   margin-top: 10px;
 }
-
-.toast {
-  z-index: 100;
-  position: fixed;
-  display: inline-block;
-}
-
-
-/* line through for old price */
-.line-through {
-  text-decoration: line-through;
-}
 /*============================================================================
 =========================== Page header styles ==============================
 ============================================================================*/
@@ -87,7 +75,6 @@ button, .button {
     font-size: 2.5rem;
   }
 }
-
 /*============================================================================
 =========================== All page  styles ==============================
 ============================================================================*/
@@ -95,17 +82,30 @@ button, .button {
 li {
   list-style-type: none;
 }
-
-
+/* line through for old price */
+.line-through {
+  text-decoration: line-through;
+}
+/* set font */
+body {
+  font-family: 'lobster', serif;
+}
 /*============================================================================
-=========================== product page  styles ==============================
+=========================== product pages styles =============================
 ============================================================================*/
-
 .product-container img, .product-details-container img {
   border: 1px solid black; 
   border-radius: 10px; 
   margin: 10px auto;
   display: block; 
   max-width: 100%;
+}
 
+/*============================================================================
+=========================== toasts  styles ===================================
+============================================================================*/
+.toast {
+  z-index: 100;
+  position: fixed;
+  display: inline-block;
 }
