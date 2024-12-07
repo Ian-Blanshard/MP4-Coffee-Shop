@@ -32,6 +32,5 @@ class DiscountForm(forms.ModelForm):
          this ensures they are unique when multiple forms are created in a loop"""
         product_id = kwargs.pop('product_id', None)
         super().__init__(*args, **kwargs)
-        if product_id:
-            for field_name, field in self.fields.items():
-                field.widget.attrs['id'] = f"{field_name}_{product_id}"
+        for field_name, field in self.fields.items():
+            field.widget.attrs['id'] = f"{field_name}_{product_id}"
