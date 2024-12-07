@@ -30,7 +30,7 @@ class DiscountForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """ override the init and add product id to all id fields,
          this ensures they are unique when multiple forms are created in a loop"""
-        product_id = kwargs.get('product_id', None)
+        product_id = kwargs.pop('product_id', None)
         super().__init__(*args, **kwargs)
         if product_id:
             for field_name, field in self.fields.items():
