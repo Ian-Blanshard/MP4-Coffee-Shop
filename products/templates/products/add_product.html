@@ -18,8 +18,6 @@
                     {% for field in form %}
                         {% if field.name != 'image' %}
                             {{ field|as_crispy_field }}
-                        {% else %}
-                            {{ field }}
                         {% endif %}
                     {% endfor %}
                     <div class="text-center mt-3">
