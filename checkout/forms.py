@@ -33,11 +33,16 @@ class OrderForm(forms.ModelForm):
         self.fields['full_name'].widget.attrs['autofocus'] = True
         #set placeholders
         for field in self.fields:
-            if self.fields[field].required:
-                # add star for reuqired fields
-                placeholder = f'{placeholders[field]} *'
+            # dont put placeholder on for country dropdown
+            if field != 'country':
+                if self.fields[field].required:
+                    # add star for reuqired fields
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
             else:
-                placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
+                # set empty label for dropdown
+                self.fields['country'].empty_label = 'Select Country'
             # remove labels
             self.fields[field].label = False
