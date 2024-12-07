@@ -1,6 +1,7 @@
 from django import forms
 from .models import Discount
 
+
 class DiscountForm(forms.ModelForm):
     class Meta:
         model = Discount
@@ -25,4 +26,3 @@ class DiscountForm(forms.ModelForm):
         labels = {
             'percentage': 'Please select a discount to apply to this product',
         }
-    

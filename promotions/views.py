@@ -4,6 +4,7 @@ from products.models import Product
 from .models import Discount
 from .forms import DiscountForm
 
+
 @login_required
 def manage_promotions(request):
     """
@@ -14,7 +15,8 @@ def manage_promotions(request):
     products = Product.objects.all()
 
     # Create a dictionary to hold all discounts
-    discounts = {discount.product_id: discount for discount in Discount.objects.all()}
+    discounts = {discount.product_id:
+                 discount for discount in Discount.objects.all()}
 
     # Create list to hold product data for the context
     product_data = []
@@ -22,7 +24,8 @@ def manage_promotions(request):
     # Loop through all products and get their discount data
     for product in products:
         discount = discounts.get(product.id)
-        discounted_price = discount.apply_discount(product.price) if discount else None
+        discounted_price = discount.apply_discount(
+            product.price) if discount else None
 
         # Append the product data (including the form and discounted price)
         product_data.append({
@@ -71,7 +74,8 @@ def edit_discount(request, product_id):
         form = DiscountForm(instance=discount)
 
     # Get the current discounted price if the product has a discount
-    discounted_price = discount.apply_discount(product.price) if discount else None
+    discounted_price = discount.apply_discount(
+        product.price) if discount else None
 
     # Render the edit discount page
     context = {
