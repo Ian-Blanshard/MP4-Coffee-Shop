@@ -9,11 +9,11 @@ class ReviewForm(forms.ModelForm):
         fields = ('review', 'rating')
 
     number_of_stars = [
-        (1, '1 - Poor'),
-        (2, '2 - Fair'),
-        (3, '3 - Good'),
-        (4, '4 - Very Good'),
         (5, '5 - Excellent'),
+        (4, '4 - Very Good'),
+        (3, '3 - Good'),
+        (2, '2 - Fair'),
+        (1, '1 - Poor'),
     ]
 
     rating = forms.ChoiceField(
