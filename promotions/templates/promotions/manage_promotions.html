@@ -9,7 +9,7 @@
             <div class="col-md-4">
                 <div class="card p-4 mb-4">
                     <!-- access the product models product_name and price values-->
-                        <h5 class="">{{ item.product.product_name }}</h5>
+                        <h5>{{ item.product.product_name }}</h5>
                         <p>Normal Retail Price: £{{ item.product.price }}</p>
                         {% if item.discounted_price %}
                             <p>Current Discount: {{ item.product.discount.percentage }}%</p>
@@ -21,7 +21,7 @@
                         <!-- create the cripsy discount form to add discount percentage-->
                         <form method="post">
                             {% csrf_token %}
-                            {{ item.form|crispy }}
+                            {{ item.form.percentage|as_crispy_field }}
                             <input type="hidden" name="product_id" value="{{ item.product.id }}">
                             <button type="submit" class="mt-2">Apply Discount</button>
                         </form>
