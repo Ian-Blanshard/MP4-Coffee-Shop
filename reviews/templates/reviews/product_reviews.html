@@ -3,7 +3,7 @@
   <!-- products reviews page title -->
   <div class="row justify-content-center">
     <div class="col-8 mt-5 products-header">
-      <h1>Reviews of {{ product.product_name }}</h1>
+      <h1 class="serif-font">Reviews of {{ product.product_name }}</h1>
     </div>
   </div>
   <!-- products review page products container -->
@@ -34,7 +34,7 @@
       <p><strong>Category :</strong> {{ product.category.friendly_name }}</p>
       {% endif %}
       <hr> 
-      <p><strong>Customer Reviews :</strong></p>
+      <p class="serif-font"><strong>Customer Reviews :</strong></p>
     </div>
   </div>
   <div class="text-center">
@@ -85,7 +85,7 @@
   </div>
 </div> 
 {% else %}
-    <p>This product doesn't currently have any reviews</p>
+    <p class="serif-font">This product doesn't currently have any reviews</p>
     {% endif %}
   </div>
 

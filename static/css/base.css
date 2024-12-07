@@ -86,8 +86,12 @@ li {
 .line-through {
   text-decoration: line-through;
 }
-/* set font */
+/* set font to sans serif for most of site */
 body {
+  font-family: "lato", sans-serif;
+}
+/* class to add serif font to parts requiring it */
+.serif-font {
   font-family: 'lobster', serif;
 }
 /*============================================================================
@@ -100,7 +104,14 @@ body {
   display: block; 
   max-width: 100%;
 }
-
+/* single product container */
+.product-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 /*============================================================================
 =========================== toasts  styles ===================================
 ============================================================================*/
