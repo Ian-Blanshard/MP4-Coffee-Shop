@@ -1,27 +1,31 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container mx-auto">
-  <h1 class="header text-center m-4">
-    Edit Discount for {{ product.product_name }}
-  </h1>
-  <!-- form to edit discount for product -->
-  <div class="card p-4 mb-4">
-    <p>Normal Retail Price: £{{ product.price }}</p>
+  <!-- page header -->
+  <h1 class="header text-center m-4">Edit Discount</h1>
+  <div class="card p-4 mb-4 mx-auto">
+    <!-- info on current price/discount -->
+    <h5>Editing discount for {{ product.product_name }}</h5>
+    <p><strong>Normal Retail Price: £</strong>{{ product.price }}</p>
     {% if product.discounted_price %}
-    <p>Current Discount: {{ product.discount.percentage }}%</p>
-    <p>Discounted Price: £{{ product.discounted_price }}</p>
+    <p><strong>Current Discount: </strong>{{ product.discount.percentage }}%</p>
+    <p><strong>Discounted Price: £</strong>{{ product.discounted_price }}</p>
     {% else %}
     <p>This item currently has no discount applied</p>
-    <p>Current Price: £{{ product.price }}</p>
+    <p><strong>Current Price: £</strong>{{ product.price }}</p>
     {% endif %}
+    <!-- form to edit discount for product -->
     <form method="post">
       {% csrf_token %} {{ form|crispy }}
       <div class="text-center mt-3">
-        <button type="submit" class="btn btn-primary">Update Discount</button>
+        <!-- button to submit form and edit discount -->
+        <button type="submit" class="button d-inline-block">
+          Update Discount
+        </button>
       </div>
     </form>
-
+    <!-- button to return to manage promotions -->
     <div class="text-center m-3">
-      <a href="{% url 'manage_promotions' %}" class="btn btn-secondary"
+      <a href="{% url 'manage_promotions' %}" class="button d-inline-block"
         >Back to Promotions</a
       >
     </div>

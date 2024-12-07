@@ -66,7 +66,7 @@ def edit_discount(request, product_id):
                     defaults={'percentage': percentage}
                 )
             # Redirect back to the promotions page after saving
-            return redirect('manage_promotions')
+            return redirect('product_details', product_id=product.id)
     else:
         form = DiscountForm(instance=discount)
 

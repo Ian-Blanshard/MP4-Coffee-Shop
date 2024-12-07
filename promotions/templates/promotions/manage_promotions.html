@@ -1,33 +1,36 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container">
-    <h1 class="header text-center m-4">Manage Promotions</h1>
-    <div class="row">
-        <!-- loop through the product_data dictionary for each item-->
-        {% for item in product_data %}
-            <div class="col-md-4">
-                <div class="card p-4 mb-4">
-                    <!-- access the product models product_name and price values-->
-                        <h5>{{ item.product.product_name }}</h5>
-                        <p>Normal Retail Price: £{{ item.product.price }}</p>
-                        {% if item.discounted_price %}
-                            <p>Current Discount: {{ item.product.discount.percentage }}%</p>
-                            <p>Discounted Price: £{{ item.discounted_price }}</p>
-                        {% else %}
-                            <p>This item currently has no discount applied</p>
-                            <p>Current Price: £{{ item.product.price }}</p>
-                        {% endif %}
-                        <!-- button to go to edit_discount page -->
-                        <a href="{% url 'edit_discount' item.product.id %}" class="button">Edit Discount</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="row text-center">
-        <div class="col-10 col-sm-4 m-5 mx-auto">
-          <a href="{% url 'products' %}" class="button">View all products</a>
-        </div>
+  <h1 class="header text-center m-4">Manage Promotions</h1>
+  <div class="row">
+    <!-- loop through the product_data dictionary for each item-->
+    {% for item in product_data %}
+    <div class="col-md-4">
+      <div class="card p-4 mb-4 mx-auto">
+        <!-- access the product models product_name and price values-->
+        <h5>{{ item.product.product_name }}</h5>
+        <p>Normal Retail Price: £{{ item.product.price }}</p>
+        {% if item.discounted_price %}
+        <p>Current Discount: {{ item.product.discount.percentage }}%</p>
+        <p>Discounted Price: £{{ item.discounted_price }}</p>
+        {% else %}
+        <p>This item currently has no discount applied</p>
+        <p>Current Price: £{{ item.product.price }}</p>
+        {% endif %}
+        <!-- button to go to edit_discount page -->
+        <a
+          href="{% url 'edit_discount' item.product.id %}"
+          class="button d-inline-block"
+          >Edit Discount</a
+        >
       </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- button to return to all products page -->
+  <div class="row text-center">
+    <div class="col-10 col-sm-4 m-5 mx-auto">
+      <a href="{% url 'products' %}" class="button">View all products</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
