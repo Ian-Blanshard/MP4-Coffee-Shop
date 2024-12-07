@@ -8,9 +8,7 @@
       <h1 class="m-5 header">Shopping Bag</h1>
     </div>
   </div>
-
   {% if bag_items %}
-
   <!-- Shopping bag as cards for mobile screen sizes (995px and below) -->
   <div class="mobile-card-layout">
     {% for item in bag_items %}
@@ -48,7 +46,7 @@
           </div>
         </div>
       </div>
-
+      <!-- update bag items form mobile -->
       <form method="POST" action="{% url 'update_bag' item.item_id %}">
         {% csrf_token %}
         <div class="text-center">
@@ -66,7 +64,7 @@
               id="id_qty_mobile_{{ item.item_id }}"
             />
           </div>
-
+          <!-- update bag items form buttons -->
           <div class="d-block">
             <button type="submit" aria-label="update quantity" name="edit" value="update" class="button m-3">
               Update
@@ -83,7 +81,6 @@
     </div>
     {% endfor %}
   </div>
-
   <!-- Shopping bag as table for large screen sizes (above 995px) -->
   <div class="desktop-table-layout">
     <div class="row">
@@ -97,7 +94,6 @@
             <th scope="col">Subtotal</th>
           </tr>
         </thead>
-
         {% for item in bag_items %}
         <tr>
           <td class="align-middle d-none d-sm-table-cell">
@@ -119,6 +115,7 @@
             </p>
           </td>
           <td class="align-middle">
+            <!-- update bag items form large screens -->
             <form method="POST" action="{% url 'update_bag' item.item_id %}">
               {% csrf_token %}
               <div class="input-group">
@@ -133,6 +130,7 @@
                   data-item_id="{{ item.item_id }}"
                   id="id_qty_{{ item.item_id }}"
                 />
+                <!-- update bag items form buttons -->
                 <button
                   type="submit"
                   name="edit"
@@ -162,7 +160,7 @@
       </table>
     </div>
   </div>
-
+  <!-- shopping bag summary div -->
   <div class="row mt-5">
     <div class="col-12 col-m-6 text-center">
       <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
@@ -178,7 +176,7 @@
       {% endif %}
     </div>
   </div>
-
+  <!-- shopping bag action buttons -->
   <div class="row mb-5">
     <div class="col-12 col-m-6 offset-m-6 mt-5 text-center">
       <a href="{% url 'products' %}" aria-label="keep shopping" class="button m-1 m-sm-3">
@@ -203,7 +201,7 @@
       >
     </p>
   </div>
-
+  <!-- message for empty shopping bags -->
   {% else %}
   <div class="row text-center">
     <div class="col-10 col-sm-4 mt-5 mx-auto">

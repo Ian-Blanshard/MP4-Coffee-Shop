@@ -3,6 +3,7 @@
 {% block content %}
     <div class="overlay"></div>
     <div class="container text-center">
+        <!-- page heading div -->
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <hr>
@@ -13,18 +14,24 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 col-md-6">
+                <!-- form for user to edit product -->
                 <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <!-- loop through form fields -->
                     {% for field in form %}
+                    <!-- user cripsy for all fields apart from image -->
                         {% if field.name != 'image' %}
                             {{ field|as_crispy_field }}
+                        <!-- will use widget for image -->
                         {% else %}
                             {{ field }}
                         {% endif %}
                     {% endfor %}
+                    <!-- submit form button -->
                     <div class="text-center mt-3">
                         <button class="button" type="submit" aria-label="submit product changes">Edit Product</button>
                     </div>
+                    <!-- cancel edit product and return to products -->
                     <div class="text-center m-3">
                     <a class="button" href="{% url 'products' %}" aria-label="cancel and return to all products page">Cancel</a>
                 </div>

@@ -172,6 +172,7 @@
         >Back to Products</a
       >
       {% if request.user.is_superuser %}
+      <!-- superuser specific actions buttons -->
       <a
         href="{% url 'edit_product' product.id %}"
         class="button m-3 d-block d-sm-inline"

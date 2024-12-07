@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block extra_css %}
-<!-- homepage specific CSS link -->
+<!-- checkout specific CSS link -->
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
 {% endblock%} {% block content %}
 <div class="container">
@@ -7,7 +7,7 @@
     <h1 class="mt-5 text-center header">Checkout</h1>
   </div>
   {% if bag_items %}
-
+  <!-- bag details div -->
   <div class="row mt-5">
     <div class="col-12 col-sm-6 text-center">
       <h4 class="mb-5">Bag Details:</h4>
@@ -19,6 +19,7 @@
             <th scope="col" class="px-5">Subtotal</th>
           </tr>
         </thead>
+        <!-- loop to populate table with bag items-->
         {% for item in bag_items %}
         <tr>
           <td class="align-middle">
@@ -33,7 +34,7 @@
           {% endfor%}
         </tr>
       </table>
-
+      <!-- summary of bag costs and delivery -->
       <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
       <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
       <h4 class="m-4">
@@ -45,7 +46,7 @@
         <strong>£{{ free_delivery_delta }}</strong> more!
       </p>
       {% endif %}
-
+      <!-- message about site and link to mu github -->
       <p class="mt-5">
         Please note coffee shop is a fictitious store, created by me, to
         practice my web development skills. No real charges can occur through
@@ -58,7 +59,7 @@
         >
       </p>
     </div>
-
+    <!-- order form -->
     <div class="col-12 col-lg-6">
       <p>
         <strong>Please fill out the form below to complete your order</strong>
@@ -113,7 +114,6 @@
           </legend>
           <!-- A Stripe card element will go here -->
           <div class="mb-3" id="card-element"></div>
-
           <!-- Used to display form errors -->
           <div class="mb-3 text-danger" id="card-errors" role="alert" aria-live="assertive"></div>
           <input
@@ -146,7 +146,7 @@
       </form>
     </div>
   </div>
-
+ <!-- div if shopping bag empty message -->
   {% else %}
   <div class="row">
     <div class="col5 offset-1">
@@ -156,7 +156,7 @@
   </div>
   {% endif %}
 </div>
-
+<!-- overlay to be displayed whilst sale processing -->
 <div id="loading-overlay">
   <h1 class="text-light logo-font loading-spinner">
     <span class="icon">
@@ -164,12 +164,13 @@
     </span>
   </h1>
 </div>
+<!-- stripe required key -->
 <div
   id="stripe-public-key"
   data-stripe-public-key="{{ stripe_public_key }}"
 ></div>
 <div id="client-secret" data-client-secret="{{ client_secret }}"></div>
 {% endblock %} {% block extra_js %} {{ block.super }}
-
+<!-- js for stripe -->
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

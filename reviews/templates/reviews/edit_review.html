@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
+  <!-- page heading div -->
   <div class="row text-center">
     <h1 class="mt-5 header">Edit review for {{ product.product_name }}</h1>
   </div>
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6">
+      <!-- form for user to edit review -->
       <form class="mt-3" action="{% url 'edit_review' review.id %}" method="POST">
         {% csrf_token %}
         {{ form|crispy }}
