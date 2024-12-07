@@ -9,9 +9,9 @@ from .forms import ProductForm
 
 # Create your views here.
 
+
 def all_products(request):
     """A view to show all products, including sorting and search queries"""
-
     products = Product.objects.all()
     # for loading page without query
     query = None
@@ -20,10 +20,8 @@ def all_products(request):
     category = None
     # set default sort key
     sortkey = 'id'
-    # query the products rating from reviews model and add the rounded rating to product
+    # query the products rating from reviews model and round rating
     products = products.annotate(avg_rating=Round(Avg('reviews__rating')))
-    
-    
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -37,7 +35,7 @@ def all_products(request):
             if direction == 'desc':
                 sortkey = f'-{sortkey}'
         # remove products with no rating if sortkey is rating
-        if sortkey == 'avg_rating' or sortkey =='-avg_rating':
+        if sortkey == 'avg_rating' or sortkey == '-avg_rating':
             products = products.filter(avg_rating__isnull=False)
 
         products = products.order_by(sortkey)
@@ -45,23 +43,22 @@ def all_products(request):
         if 'category' in request.GET:
             category = request.GET['category']
             if category == 'special_offers':
-                # get all product with current discount applied 
+                # get all product with current discount applied
                 products = products.filter(discount__isnull=False)
             elif Category.objects.filter(name=category).exists():
                 products = products.filter(category__name=category)
-            
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             # use Q to search if query is in either name or description
-            queries = Q(product_name__icontains=query) | Q(description__icontains=query)
+            queries = Q(product_name__icontains=query) | Q(
+                description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-
     context = {
         'products': products,
         'search_term': query,
@@ -74,7 +71,6 @@ def all_products(request):
 
 def product_detail(request, product_id):
     """A view to show all a single products details"""
-
     product = get_object_or_404(Product, pk=product_id)
     product = Product.objects.annotate(
         avg_rating=Round(Avg('reviews__rating'))
@@ -82,7 +78,6 @@ def product_detail(request, product_id):
     context = {
         'product': product,
     }
-    
     return render(request, 'products/product_details.html', context)
 
 
@@ -99,15 +94,15 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm(request=request)
-        
     template = 'products/add_product.html'
     context = {
         'form': form,
     }
-
     return render(request, template, context)
 
 
@@ -125,11 +120,12 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.product_name}')
-
     template = 'products/edit_product.html'
     context = {
         'form': form,
@@ -137,6 +133,7 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_product(request, product_id):
