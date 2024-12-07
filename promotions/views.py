@@ -42,7 +42,7 @@ def manage_promotions(request):
             # get discount assosciated with that product
             discount = discounts.get(product.id)
             # create form for product
-            form = DiscountForm(instance=discount)
+            form = DiscountForm(instance=discount, product_id=product.id)
             # get discounted price to display if product has discount 
             discounted_price = (
                 discount.apply_discount(product.price) if discount else None
