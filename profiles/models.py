@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
+    """model representing a user profile, containing delivery details"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_phone_number = models.CharField(
         max_length=20, null=True, blank=True)
@@ -24,7 +25,7 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
-
+    # not existing user create profile
     if created:
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
