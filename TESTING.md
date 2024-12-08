@@ -85,6 +85,167 @@ Apple Safari | Site functioned as expected, design appearance correct and respon
 
 #### Testing site features  <a name="testing-site-features"></a>
 
+##### Testing Navbar  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Login button | Clicking the login button loads the login form successfully | Pass  
+Logout button | Clicking the logout button logs the user out and reloads the homepage | Pass  
+Add product to store button | Clicking the button loads the add product form for the admin user | Pass  
+Manage promotions button | Clicking the button loads the manage promotions page for the admin user | Pass  
+Manage reviews button | Clicking the button loads the manage reviews page for the admin user | Pass  
+My profile button | Clicking the button loads the user's profile page | Pass  
+View shopping bag button | Clicking the button loads the shopping bag page | Pass  
+Coffee shop logo link | Clicking the logo link reloads the homepage | Pass  
+Search bar | Entering a query and pressing enter loads the search results page | Pass  
+Ground coffee link | Clicking the link loads the ground coffee category page | Pass  
+Coffee beans link | Clicking the link loads the coffee beans category page | Pass  
+Accessories link | Clicking the link loads the accessories category page | Pass  
+Special offers link | Clicking the link loads the special offers category page | Pass  
+
+***
+
+##### Testing Homepage  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+View all products button | Clicking the button loads the products page displaying all available products | Pass  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+Store info cards | Store information cards are displayed correctly and provide relevant information to the user | Pass  
+
+***
+##### Testing Products Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Sort button (high to low) price | Clicking the button sorts products by price from highest to lowest | Pass  
+Sort button (low to high) price | Clicking the button sorts products by price from lowest to highest | Pass  
+Sort button (high to low) rating | Clicking the button sorts products by rating from highest to lowest | Pass  
+Sort button (low to high) rating | Clicking the button sorts products by rating from lowest to highest | Pass  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+View all products button | Clicking the button reloads the page displaying all available products | Pass  
+View product details button | Clicking the button loads the product details page for the selected product | Pass  
+Product image link (takes to product details page) | Clicking the product image link loads the product details page for the selected product | Pass  
+
+***
+
+##### Testing Products Detail Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+View customer reviews button | Clicking the button displays customer reviews for the product | Pass  
+Add to shopping bag button | Clicking the button adds the selected product to the shopping bag | Pass  
+Item quantity input | User can input and update the quantity of the product before adding it to the shopping bag | Pass  
+Back to products button | Clicking the button navigates back to the products page | Pass  
+
+***
+
+##### Testing Customer Reviews Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+Customer reviews | Customer reviews load if they exist; if no reviews are available, a message stating "No reviews" is displayed | Pass  
+Add review button | Clicking the button allows the user to add a new review for the product | Pass  
+
+***
+
+##### Testing Shopping Bag Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+Shopping bag items | Items in the shopping bag are displayed with correct details (name, price, quantity) | Pass  
+Item quantity input | Users can update the quantity of an item directly in the shopping bag | Pass  
+Delete item button | Clicking the delete button removes the corresponding item from the shopping bag | Pass  
+Keep shopping button | Clicking the button redirects the user back to the products page to continue shopping | Pass  
+Secure checkout button | Clicking the button takes the user to the secure checkout page | Pass  
+
+***
+
+##### Testing Checkout Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+Bag details | Bag details (items, prices, quantities, totals) are displayed accurately | Pass  
+Checkout form | Users can fill out the checkout form with their delivery and payment information | Pass  
+Save delivery information checkbox | Checking this box saves the user's delivery information for future use | Pass  
+Edit bag button | Clicking the button redirects the user back to the shopping bag page to make changes | Pass  
+Complete order button | Clicking the button submits the order and processes payment | Pass  
+Order successfully created in admin | Order is visible in the admin panel after successful checkout | Pass  
+
+***
+
+##### Testing Checkout Success Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page content loaded correctly and is visible to the user | Pass  
+Order successful toast | A toast message is displayed confirming the order was successful | Pass  
+Order details correct | Order details (items, quantities, prices, totals, and delivery info) are displayed accurately | Pass  
+
+***
+
+##### Testing Webhook Handler  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Payment intent succeeded but order form not submitted | Order is still created successfully despite form submission failure | Pass  
+
+***
+
+##### Testing My Profile Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page loads correctly and displays all relevant information | Pass  
+Default delivery information displayed | Default delivery information is shown correctly | Pass  
+Default delivery information editing | User can edit and save changes to delivery information | Pass  
+Order history | Order history is displayed correctly and links work to order details | Pass  
+
+***
+
+##### Testing Add Review Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page loads correctly and displays review form | Pass  
+Review form | User can fill out and submit review form | Pass  
+Add review button | Clicking the button successfully adds the review | Pass  
+
+***
+
+##### Testing Manage Promotions Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page loads correctly and displays promotions management options | Pass  
+Edit discount button | Clicking the button opens the edit discount form | Pass  
+Edit discount form | Form allows updating of discount details and saves changes correctly | Pass  
+
+***
+
+##### Testing Add to Store Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page loads correctly and displays options to add products | Pass  
+Add a product form | Form displays fields for adding a new product | Pass  
+Image uploading widget | Image widget allows user to upload product images successfully | Pass  
+Add product button | Button successfully adds product to the store and saves the data | Pass  
+
+***
+
+##### Testing Manage Reviews Page  
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Page loads correctly and displays all reviews | Pass  
+Delete review button | Button allows admin to delete reviews and updates list | Pass  
+
+***
 
 ### Testing User Stories <a name="testing-user-stories"></a>
 
@@ -169,5 +330,16 @@ Another feature which didn't make the cut for this current build was having a st
 
 #### Bug fixes
 
+Fixed a bug in which sort by ratings included product with no current ratings and put them at the top above products with highest rating.
+
+Fixed a bug in which the products home button on products page would be located incorrectly in instances of product searches with a low amount of results.
+
+Fixed a bug in which styles were not applied to allauth verify email address page.
+
+Fixed a bug in which order history page buttons were overflowing into each other.
+
+Fixed a bug in which empty quotation marks were visible for reviews which contained no text review.
+
+The main issues I faced during this project was during deploying the page and using AWS S3 bucket to store static files, this was due to my experience of learning this process using older versions of many of the technologies used. When it came to producing my own project I decided to use the most recent versions as I thought this would be a valuable learning process for me as a developer. Technologies change rapidly and being up to date and able to update projects to use the most recent version of technologies is a useful skill. I'm glad I chose to do this but it has also lowered the quality of other aspects of my project, features I would have liked to include and better styling of the site, had i had longer to work on it. But overall I'm happy I managed to get a deployed version working, and tested, with the features it has. I plan to implement further features after the deadline and continue to build upon these skills I have learnt. 
 
 ***

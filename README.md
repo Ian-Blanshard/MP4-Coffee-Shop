@@ -2,6 +2,8 @@
 
 ![Screenshot of store](/static/images/site_hompage.jpg)
 
+![Screenshot of store](/static/images/products_page.jpg)
+
 Coffee shop is a fictional e-commerce store, created to practice my full-stack web development skills. 
 
 Live version of site hosted on Heroku [here](https://coffee-shop-mp4-a883163ad215.herokuapp.com/)
