@@ -13,15 +13,6 @@ body {
     background-size: cover; 
     min-height: 550px; 
 }
-/* set the hero image for error page and its position and size */
-.hero-image-404 {
-    background-image: url(/static/images/coffee_beans1.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-}
 /*============================================================================
 ====================== Hero image section text styles ========================
 ============================================================================*/
