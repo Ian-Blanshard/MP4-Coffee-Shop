@@ -16,14 +16,15 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/core.css' %}" />
   </head>
   <body>
-    <div class="col-12 col-sm-8 mx-auto text-center">
-      <h1>Oops! Page Not Found</h1>
-      <p>
-        Lets get you back to where you're supposed to be!
-      </p>
-      <p><a href="{% url 'home' %}" class="button">Return to home page</a></p>
+    <div class="container hero-image">
+      <div class="col-12 col-sm-8 mx-auto text-center">
+        <h1>Oops! Page Not Found</h1>
+        <p>Lets get you back to where you're supposed to be!</p>
+        <p><a href="{% url 'home' %}" class="button">Return to home page</a></p>
+      </div>
     </div>
   </body>
 </html>
