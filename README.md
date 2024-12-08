@@ -1,10 +1,10 @@
 # MP4-Coffee-Shop
 
-![Screenshot of store on different devices]()
+![Screenshot of store](/static/images/site_hompage.jpg)
 
-Coffee shop is a  
+Coffee shop is a fictional e-commerce store, created to practice my full-stack web development skills. 
 
-Live version of site hosted on Heroku [here]()
+Live version of site hosted on Heroku [here](https://coffee-shop-mp4-a883163ad215.herokuapp.com/)
 
 ***
 
@@ -120,7 +120,7 @@ Site admin | Review customer product reviews | Ensure reviews are appropriate fo
 
 As I am using django/ django allauths models for managing users and login. The schema focusses on modals I created for managing products, shopping bags and reviews.
 
-![Screenshot database schema](/coffeeshop/static/images/database_schema.jpg)
+![Screenshot database schema](/static/images/database_schema.jpg)
 
 ***
 
@@ -128,43 +128,43 @@ As I am using django/ django allauths models for managing users and login. The s
 
 #### Homepage
 
-![Homepage wireframe](/coffeeshop/static/images/homepage-wireframe.jpg)
+![Homepage wireframe](/static/images/homepage-wireframe.jpg)
 
 ***
 
 #### Products page
 
-![Products page wireframe](/coffeeshop/static/images/products_wireframe.jpg)
+![Products page wireframe](/images/products_wireframe.jpg)
 
 ***
 
 #### Single product page
 
-![Products page wireframe](/coffeeshop/static/images/single_product_wireframe.jpg)
+![Products page wireframe](/static/images/single_product_wireframe.jpg)
 
 ***
 
 #### Shopping bag page
 
-![Shopping bag page wireframe](/coffeeshop/static/images/shopping_bag_wireframe.jpg)
+![Shopping bag page wireframe](/static/images/shopping_bag_wireframe.jpg)
 
 ***
 
 #### Submit review page
 
-![Submit review page wireframe](/coffeeshop/static/images/submit_review_wireframe.jpg)
+![Submit review page wireframe](/static/images/submit_review_wireframe.jpg)
 
 ***
 
 #### Product reviews page
 
-![Submit review page wireframe](/coffeeshop/static/images/product_reviews_wireframe.jpg)
+![Submit review page wireframe](/static/images/product_reviews_wireframe.jpg)
 
 ***
 
 #### Profile page
 
-![Profile page wireframe](/coffeeshop/static/images/profile_wireframe.jpg)
+![Profile page wireframe](/static/images/profile_wireframe.jpg)
 
 ***
 
@@ -334,6 +334,14 @@ This Project uses the following languages:
 [PostgreSQL](https://www.postgresql.org/) was used as the database to store and manage application data.
 
 [Amazon webservices s3](https://aws.amazon.com/s3/) was used to store static files and media for my site.
+
+[Git](https://git-scm.com/) and [GitHub](https://github.com/) for version control and as a repository.
+
+[Google Fonts](https://fonts.google.com/) was used to browse, select and as a source of the font I used on this site.
+
+[FontAwesome](https://fontawesome.com/) was used for social media icons in the footer.
+
+[favicon.io](https://favicon.io/) was used to create the favicon for my site.
 
 Please see the requirements.txt for a full list of the packages used and versions in my project.
 
