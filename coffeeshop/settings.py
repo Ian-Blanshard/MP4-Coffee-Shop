@@ -34,19 +34,19 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY',
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET',
                              'your_default_stripe_webhook_secret')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     'coffee-shop-mp4-a883163ad215.herokuapp.com',
     'localhost',
     '127.0.0.1']
 # Application definition
 INSTALLED_APPS = [
-    "whitenoise.runserver_nostatic",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     # allauth apps
     'allauth',
@@ -86,8 +86,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'allauth'),
+            BASE_DIR / 'templates',
+            BASE_DIR / 'templates' / 'allauth',
 
         ],
         'APP_DIRS': True,
@@ -199,20 +199,19 @@ STORAGES = {
         'BACKEND': 'custom_storages.MediaStorage',
         'LOCATION': 'media',
     },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    'staticfiles': {
+        'BACKEND': 'custom_storages.StaticStorage',
+        'LOCATION': 'static',
     },
 }
-WHITENOISE_KEEP_ONLY_HASHED_FILES = True
-STATIC_ROOT = BASE_DIR / "staticfiles"   # For WhiteNoise
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
-
-SITE_IMAGES = os.path.join(MEDIA_URL, 'images/')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 # stripe
