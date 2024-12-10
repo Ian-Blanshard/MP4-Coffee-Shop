@@ -27,7 +27,7 @@ My CSS code passed validation with no errors
 
 #### HTML validation <a name="html-validation"></a>
 
-My html showed a variety of errors during validation.
+My HTML showed a variety of errors during validation.
 
 One img element didn't have a alt.
 
@@ -53,7 +53,7 @@ I rectified all these issues and my code passed as can be seen below
 #### JavaScript validation <a name="javascript-validation"></a>
 
 
-My JavaScript passed valiation, it had one undefined variable but this was Stripe which would be made available from the stripe cdn, which was contained in a html script, which isn't loaded because i was just copying the js code.
+My JavaScript passed validation, it had one undefined variable, but this was Stripe which would be made available from the stripe cdn, which was contained in a HTML script, which isn't loaded because i was just copying the JS code.
 
 ![JavaScript validation pass](/static/images/js_validation.jpg)
 
@@ -263,7 +263,7 @@ A site visitor is someone who has found the site and is not yet decided whether 
 | Visitor             | Easily find a method to contact the company should I have further queries about products or services | Get a quick response to my queries, enabling me to make decisions         | Fail     |
 | Visitor             | Receive feedback when using features of the site        | Know whether the actions I have taken on the site have been successful    | Pass      |
 
-In my final design I havn't implemented links to social media, or a contact form, these would be features I would like to include in a future build. Having had many issues with deploying the site and with the deadline for the project looming, I decided to focus on the core components of the e-commerce store to ensure these were functioning correctly. Having done both of these features in previous projects I decided they were of lesser importance than the ones I focussed on completing.
+In my final design I haven't implemented links to social media, or a contact form, these would be features I would like to include in a future build. Having had many issues with deploying the site and with the deadline for the project looming, I decided to focus on the core components of the e-commerce store to ensure these were functioning correctly. Having done both of these features in previous projects I decided they were of lesser importance than the ones I focussed on completing.
 
 ***
 
@@ -306,7 +306,7 @@ A regular customer is someone who uses the site often, having multiple purchases
 | Regular customer     | Receive recommendations of products I may be interested in | Purchase products which are recommended for customers who have purchased products which I have | Pass      |
 | Regular customer     | Have exclusive offers for being a regular customer    | Feel valued as a regular customer and make savings                         | Fail      |
 
-As discussed above due to the time constraints I failed to implement the offers specific to certain users. I did manage to implement the offers feature in which the site superuser could add/ remove promotions from products and am please with managing to build this. In a future build expanding this feature to be able to target specific customers would be a nice way to imporve this feature.
+As discussed above due to the time constraints I failed to implement the offers specific to certain users. I did manage to implement the offers feature in which the site superuser could add/ remove promotions from products and am please with managing to build this. In a future build expanding this feature to be able to target specific customers would be a nice way to improve this feature.
 ***
 
 #### Testing for Site Admin

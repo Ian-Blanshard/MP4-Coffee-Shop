@@ -57,13 +57,13 @@ Visitor | Understand the purpose of the site immediately upon visiting | Decide 
 Visitor | Find information about the company and its values and products | Decide whether their values and products are suitable for me to purchase 
 Visitor | Use a site which has a responsive design | I can use the site on all of the devices I own 
 Visitor | Be able to easily understand what information is available on the site and how to find it  | Navigate to the information/ services which interest me
-Visitor | Be presented with eaily recongisable links to the companies social media | Connect with the company on social media to learn about the latest information 
+Visitor | Be presented with easily recongisable links to the companies social media | Connect with the company on social media to learn about the latest information 
 Visitor | Easily find a method to contact the company should I have further queries about products or services | Get a quick response to my queries, enabling me to make decisions 
-Visitor | Receive feedback when using features of the site | Know whether the actions I have taken on the site have been succesful
+Visitor | Receive feedback when using features of the site | Know whether the actions I have taken on the site have been successful
 
 #### Casual Customer
 
-A casual customer is someone who wants to purchase an item from the site as a first purchase and/or a one off, the site goal is to convert these types of customers to return/ regular customers
+A casual customer is someone who wants to purchase an item from the site as a first purchase and/or a one-off, the site goal is to convert these types of customers to return/ regular customers
 
 As a | I want to |  So that I can 
 -------|-------|-------
@@ -75,8 +75,8 @@ Casual customer | Be able to see all products which have offers on them | Purcha
 Casual customer | Add items to a shopping bag | Purchase a number of items at once
 Casual customer | View the content of my shopping bag | review and make changes to my selections prior to purchase
 Casual customer | Be able to checkout securely without making a user account | Quickly make a purchase from the site
-Casual customer | View a confirmation of my order after purchase | Ensure the purchase has been succesful and contains the correct items
-Casual customer | Receive a confirmation email on the completion of my order | Keep a record of the succesful order and the items it contains
+Casual customer | View a confirmation of my order after purchase | Ensure the purchase has been successful and contains the correct items
+Casual customer | Receive a confirmation email on the completion of my order | Keep a record of the successful order and the items it contains
 Casual customer | Have the options to use my details to create an account during checkout | Become a regular customer if I decide to 
 
 #### Regular Customer
@@ -100,7 +100,7 @@ Regular customer | Have exclusive offers for being a regular customer | Feel val
 
 #### Site Admin
 
-The site admin is the user who is using the site to sell their products, they want a simple interface to deal with managing the e-commerce side of thier business
+The site admin is the user who is using the site to sell their products, they want a simple interface to deal with managing the e-commerce side of their business
 
 As a | I want to |  So that I can 
 -------|-------|-------
@@ -120,17 +120,17 @@ Site admin | Review customer product reviews | Ensure reviews are appropriate fo
 
 [Lucid chart](www.lucidchart.com) was used to create a database schema and wireframes for the project. This ensured I had a clear vision for the project before beginning to write code.
 
-As I am using django/ django allauths models for managing users and login. The schema focusses on modals I created for managing products, shopping bags and reviews.
+As I am using django/ django allauths models for managing users and login. The schema focuses on modals I created for managing products, shopping bags and reviews.
 
 ![Screenshot database schema](/static/images/database_schema.jpg)
 
-The initial schema was what I began with when designing the site, But there ended up being some changes. I put this down to my experience as having never built out a full e-commerce store I hadn't understood some of the challenges I would be faced with if I had stuck rigourously to this design.
+The initial schema was what I began with when designing the site, But there ended up being some changes. I put this down to my experience as having never built out a full e-commerce store I hadn't understood some of the challenges I would be faced with if I had stuck rigorously to this design.
 
 ***
 
 ### Wireframes <a name="wireframes"></a>
 
-The wireframes for the site were my starting point, as the project progressed I decided to make some changes from the initial designs as I thought they were more user friendly and provided easier customer navigation of the site.
+The wireframes for the site were my starting point, as the project progressed I decided to make some changes from the initial designs as I thought they were more user-friendly and provided easier customer navigation of the site.
 
 #### Homepage
 
@@ -178,17 +178,17 @@ The wireframes for the site were my starting point, as the project progressed I 
 
 #### The color scheme for the site
 
-The colour scheme for the site is a simple black and white style, this was what I began building the site with and as I added features I thought it looked nice and kept the store user friendly. Although if I had more time I would have like to experiment with other options. I chose to focus on building the features of the store.
+The colour scheme for the site is a simple black and white style, this was what I began building the site with and as I added features I thought it looked nice and kept the store user-friendly. Although if I had more time I would have like to experiment with other options. I chose to focus on building the features of the store.
 
 #### The fonts used for the site
 
-The fonts used for the site were from google fonts.
+The fonts used for the site were from Google fonts.
 
 I chose a serif font 'Lobster' for some of the titles.
 
 I chose a sans-serif font 'Lato' for the majority of the site, including the part in which readability was of high importance, such as checkout pages.
 
-Both fonts have fallbacks of serif and sans-serif in case there was an issues with font loading or support.
+Both fonts have fallbacks of serif and sans-serif in case there was an issue with font loading or support.
 
 <br>
 
@@ -237,7 +237,7 @@ My app demonstrates CRUD functionality as outlined below:
 ![Full screen navbar](/static/images/full_screen_navbar.jpg)
 The nave bar allows user to navigate the page, the coffee shop logo will return users to the homepage, the profile icon contains a dropdown with all the profile related links and the shopping basket contains one with all the shopping bag related links.
 
-The superuser will have additonal links avaiable to them inside these menus, these are not visible to other users and even if the url is typed in directly they are not accessible to to others.
+The superuser will have additional links available to them inside these menus, these are not visible to other users and even if the url is typed in directly they are not accessible to to others.
 
 There is also quick links to the products of each category in a secondary bar.
 
@@ -276,7 +276,7 @@ It also contains features to view products by category or to search for terms wh
 
 ![Products page](/static/images/products_page.jpg)
 
-The user can see the following product details for each prodcut displayed:
+The user can see the following product details for each product displayed:
 product image, its price (including any discounts), its average review rating and category. The user can click the view products details page to see further information on the product.
 
 The product page also has a sort button which will sort product either by price or ratings in both descending and ascending orders.
@@ -305,7 +305,7 @@ The customer reviews page displays all the reviews from that current product, it
 
 ![customer reviews page](/static/images/customer_reviews_page.jpg)
 
-If the customer is logged in they have a button which can take them to a form to leave there own review of the product. They are also able to edit previous reviews of theirs.
+If the customer is logged in they have a button which can take them to a form to leave their own review of the product. They are also able to edit previous reviews of theirs.
 
 At the bottom of the page a button is available to navigate back to the product.
 
@@ -315,7 +315,7 @@ At the bottom of the page a button is available to navigate back to the product.
 
 ![shopping bag page](/static/images/shopping_bag.jpg)
 
-The shopping bage page allows users to see a summary of all the items in their bag, update quantities or delete itemes from thier bag. 
+The shopping bag page allows users to see a summary of all the items in their bag, update quantities or delete items from their bag. 
 
 They can also continue to the checkout page or return to the products page to continue shopping
 
@@ -325,7 +325,7 @@ They can also continue to the checkout page or return to the products page to co
 
 ![checkout page](/static/images/checkoutpage.jpg)
 
-The checkout page is the page where the user can fill out all the required details to complete thier order, it has a stripe card field which allows payment to be taken.
+The checkout page is the page where the user can fill out all the required details to complete their order, it has a stripe card field which allows payment to be taken.
 
 There is a summary of the order so they can ensure the correct items are in the bag.
 
@@ -343,7 +343,7 @@ The checkout success page is displayed when the user has successfully purchased 
 
 #### Toasts 
 
-Toasts are used across the site to ensure users are aware that actions they have taken have been succesful, user feedback is essential to the functioning of the site.
+Toasts are used across the site to ensure users are aware that actions they have taken have been successful, user feedback is essential to the functioning of the site.
 Below are a small example of some of them
 
 ![toast](/static/images/toast.jpg)
@@ -395,7 +395,7 @@ They can enter a rating of the product and also an optional text comment about t
 
 The manage promotions page is a page specific to superusers it allows the owner of the site to change products which are on offer, applying a percentage discount to their price.
 
-They are taken to a seperate page with a form when they have chosen which product they would like to edit the price of.
+They are taken to a separate page with a form when they have chosen which product they would like to edit the price of.
 
 ![manage promotions page](/static/images/manage_promotions1.jpg)
 
